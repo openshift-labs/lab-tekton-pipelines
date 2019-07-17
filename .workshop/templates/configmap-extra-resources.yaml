@@ -1,0 +1,54 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: configmap-extra-resources
+parameters:
+- name: JUPYTERHUB_NAMESPACE
+  value: ""
+  required: true
+- name: JUPYTERHUB_APPLICATION
+  value: ""
+  required: true
+objects:
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: ${JUPYTERHUB_APPLICATION}-res
+    namespace: ${JUPYTERHUB_NAMESPACE}
+    labels:
+      app: ${JUPYTERHUB_APPLICATION}-${JUPYTERHUB_NAMESPACE}
+      spawner: learning-portal
+  data:
+    extra_resources.json: |-
+      {
+        "kind": "List",
+        "apiVersion": "v1",
+        "items": [
+          {
+            "kind": "ServiceAccount",
+            "apiVersion": "v1",
+            "metadata": {
+              "name": "pipelines"
+            }
+          },
+          {
+            "kind": "RoleBinding",
+            "apiVersion": "rbac.authorization.k8s.io/v1",
+            "metadata": {
+              "name": "pipelines-privileged-user"
+            },
+            "subjects": [
+              {
+                "kind": "ServiceAccount",
+                "name": "pipelines",
+                "namespace": "${project_namespace}"
+              }
+            ],
+            "roleRef": {
+              "kind": "ClusterRole",
+              "apiGroup": "rbac.authorization.k8s.io",
+              "name": "pipelines-privileged-user"
+            }
+          }
+        ]
+      }

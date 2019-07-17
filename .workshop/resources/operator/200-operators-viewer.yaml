@@ -1,0 +1,14 @@
+apiVersion: authorization.openshift.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    openshift.io/description: "Role Binding to see deployments in the operator"
+  name: operators-viewer
+rules:
+- apiGroups:
+  - ""
+  - extensions
+  resources:
+  - deployments
+  verbs:
+  - get

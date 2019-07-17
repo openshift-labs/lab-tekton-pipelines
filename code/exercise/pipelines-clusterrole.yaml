@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    openshift.io/description: "Role-Based Access to SCCs for Executing some Tekton Pipelines tasks"
+  name: pipelines-task-runner
+  labels:
+    app: tekton-workshop
+rules:
+- apiGroups:
+  - security.openshift.io 
+  resources:
+  - securitycontextconstraints 
+  verbs:
+  - use
+  resourceNames:
+  - privileged

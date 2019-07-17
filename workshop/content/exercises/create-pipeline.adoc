@@ -1,0 +1,70 @@
+A pipeline defines a number of tasks that should be executed and how they interact with each other via their inputs and outputs.
+
+In this tutorial, you will create a pipeline that takes the source code of PetClinic application from GitHub and then builds and deploys it on OpenShift using link:https://docs.openshift.com/container-platform/4.1/builds/understanding-image-builds.html#build-strategy-s2i_understanding-image-builds[Source-to-Image (S2I)].
+
+image:../images/pipeline-diagram.svg[OpenShift OperatorHub]
+
+Here is the YAML file that represents the above pipeline:
+
+[source,yaml]
+----
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: deploy-pipeline
+spec:
+  resources:
+  - name: app-git
+    type: git
+  - name: app-image
+    type: image
+  tasks:
+  - name: build
+    taskRef:
+      name: s2i-java-8
+    params:
+      - name: TLSVERIFY
+        value: "false"
+    resources:
+      inputs:
+      - name: source
+        resource: app-git
+      outputs:
+      - name: image
+        resource: app-image
+  - name: deploy
+    taskRef:
+      name: openshift-client
+    runAfter:
+      - build
+    params:
+    - name: ARGS
+      value: "rollout latest spring-petclinic"
+----
+
+This pipeline performs the following:
+
+1. Clones the source code of the application from a Git repository (`app-git` resource)
+3. Builds the container image using the `s2i-java-8` task that generates a Dockerfile for the application and uses link:https://buildah.io/[Buildah] to build the image
+4. The application image is pushed to an image registry (`app-image` resource)
+5. The new application image is deployed on OpenShift using the `openshift-cli`
+
+You might have noticed that there are no references to the PetClinic Git repository and its image in the registry. That's because `Pipeline`s in Tekton are designed to be generic and re-usable across environments and stages through the application's lifecycle. `Pipeline`s abstract away the specifics of the Git source repository and image to be produced as `resource`s. When triggering a pipeline, you can provide different Git repositories and image registries to be used during pipeline execution. Be patient! You will do that in a little bit in the next section.
+
+The tasks execution order is determined based on the dependencies that are defined between the tasks via `inputs` and `outputs` as well as explicit orders that are defined via `runAfter`.
+
+Save the pipeline definition as a `.yaml` file and then create it using `oc create -f YOUR_FILE_NAME.yaml`. Alternatively, in the OpenShift console, you can click on **Add &#8594; Import YAML** at the top right of the screen while you are in the **pipelines-tutorial** project, paste the YAML into the textfield, and click on **Create**.
+
+image:../images/console-import-yaml-1.png[OpenShift Console - Import Yaml Menu]
+
+image:../images/console-import-yaml-2.png[OpenShift Console - Import Yaml]
+
+
+Check the list of pipelines you have created using the CLI:
+
+[source,bash]
+----
+$ tkn pipeline ls
+NAME             AGE              LAST RUN   STARTED   DURATION   STATUS
+build-pipeline   25 seconds ago   ---        ---       ---        ---
+----

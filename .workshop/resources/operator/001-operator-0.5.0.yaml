@@ -1,0 +1,11 @@
+apiVersion: operators.coreos.com/v1
+kind: OperatorSource
+metadata:
+  name: openshift-pipelines-operators
+  namespace: openshift-marketplace
+spec:
+  type: appregistry
+  endpoint: https://quay.io/cnr
+  registryNamespace: nikhilthomas
+  displayName: "Openshift Pipelines Operators"
+  publisher: "Openshift Pipelines"

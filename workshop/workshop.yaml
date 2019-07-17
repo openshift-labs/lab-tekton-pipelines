@@ -1,8 +1,13 @@
-name: AsciiDoc Sample
+name: OpenShift Pipelines with Tekton
 
 modules:
     activate:
     - workshop-overview
-    - setup-environment
-    - exercises/01-sample-content
+    - concepts
+    - install-tekton-operator
+    - verify-workshop-environment
+    - exercises/deploy-sample-app
+    - exercises/install-tasks
+    - exercises/create-pipeline
+    - exercises/trigger-pipeline
     - workshop-summary

@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: petclinic-git
+  labels:
+    app: tekton-workshop
+spec:
+  type: git
+  params:
+  - name: url
+    value: https://github.com/spring-projects/spring-petclinic

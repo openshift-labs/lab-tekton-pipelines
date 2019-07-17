@@ -1,12 +1,21 @@
 modules:
     workshop-overview:
         name: Workshop Overview
-        exit_sign: Setup Environment
-    setup-environment:
-        name: Setup Environment
-        exit_sign: Start Workshop
-    exercises/01-sample-content:
-        name: Sample Content
+#        exit_sign: Setup Environment
+    concepts:
+        name: Tekton concepts
+    install-tekton-operator:
+        name: Install OpenShift Pipelines Operator
+    verify-workshop-environment:
+        name: Verify workshop environment
+    exercises/deploy-sample-app:
+        name: Deploy a sample application
+    exercises/install-tasks:
+        name: Install Tasks
+    exercises/create-pipeline:
+        name: Create a Pipeline
+    exercises/trigger-pipeline:
+        name: Trigger a Pipeline
     workshop-summary:
         name: Workshop Summary
         exit_sign: Finish Workshop

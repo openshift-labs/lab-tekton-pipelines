@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  generateName: petclinic-deploy-pipelinerun-
+  labels:
+    app: tekton-workshop
+spec:
+  pipelineRef:
+    name: deploy-pipeline
+  trigger:
+    type: manual
+  serviceAccount: 'pipeline'
+  resources:
+  - name: app-git
+    resourceRef:
+      name: petclinic-git
+  - name: app-image
+    resourceRef:
+      name: petclinic-image

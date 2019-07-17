@@ -1,0 +1,87 @@
+Now that the pipeline is created, you can trigger it to execute the tasks specified in the pipeline. Triggering pipelines is an area that is under development and in the next release it will be possible to be done via the OpenShift web console and Tekton CLI. In this tutorial, you will trigger the pipeline through creating the Kubernetes objects (the hard way!) in order to learn the mechanics of triggering.
+
+First, you should create a number of `PipelineResource`s that contain the specifics of the Git repository and image registry to be used in the pipeline during execution. Expectedly, these are also reusable across multiple pipelines.
+
+The following `PipelineResource` defines the Git repository and reference for the PetClinic application:
+
+[source,yaml]
+----
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: petclinic-git
+spec:
+  type: git
+  params:
+  - name: url
+    value: https://github.com/spring-projects/spring-petclinic
+----
+
+And the following defines the OpenShift internal registry for the PetClinic image to be pushed to:
+
+[source,yaml]
+----
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: petclinic-image
+spec:
+  type: image
+  params:
+  - name: url
+    value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic
+----
+
+Create the above pipeline resources via the OpenShift web console or save them in a file and use `oc create -f`.
+
+A `PipelineRun` is how you can trigger a pipeline and tie it to the Git and image resources that should be used for this specific invocation:
+
+[source,yaml]
+----
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  generateName: petclinic-deploy-pipelinerun-
+spec:
+  pipelineRef:
+    name: deploy-pipeline
+  trigger:
+    type: manual
+  serviceAccount: 'pipeline'
+  resources:
+  - name: app-git
+    resourceRef:
+      name: petclinic-git
+  - name: app-image
+    resourceRef:
+      name: petclinic-image
+----
+
+Create the above pipeline resources via the OpenShift web console or save them in a file and use `oc create -f`.
+
+The pipeline would then get instantiated and create a number of pods to execute the tasks that are defined in the pipeline. After a few minutes, the pipeline should finish successfully.
+
+[source,bash]
+----
+# tkn pr ls
+NAME                                 STARTED         DURATION    STATUS
+petclinic-deploy-pipelinerun-lkq7d   7 minutes ago   3 minutes   Succeeded
+----
+
+Check the pipelinerun logs as it executes:
+
+[source,bash]
+----
+$ tkn pr logs petclinic-deploy-pipelinerun-lkq7d -f
+...
+
+[s2i-java-8 : nop] Build successful
+
+[openshift-client : oc] deploymentconfig.apps.openshift.io/spring-petclinic rolled out
+
+[openshift-client : nop] Build successful
+----
+
+Looking back at the project, you should see that the PetClinic image is successfully built and deployed.
+
+images:images/petclinic-deployed-2.png[PetClinic Deployed]

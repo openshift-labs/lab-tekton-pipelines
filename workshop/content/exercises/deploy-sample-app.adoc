@@ -1,0 +1,35 @@
+For this tutorial we're going to use a simple sample application. The workshop is configured to provide you a pre-created project. We can verify the name of the project with:
+
+[source,bash,role=execute-1]
+----
+oc project -q
+----
+
+Building container images using build tools such as `S2I`, `Buildah`, `Kaniko`, etc require privileged access to the cluster. OpenShift default security setting does not allow privileged containers unless specifically configured. 
+
+This workshop has created a ServiceAccount with the required permissions to run privileged pods for building images. The name of this service Account is easy to remember, `pipeline`:
+
+[source,bash,role=execute-1]
+----
+oc get serviceaccount pipeline
+----
+
+Now, let's verify that has the appropriate permission, access to the `privileged` Security Context Constrain (SCC):
+
+[source,bash,role=execute-1]
+----
+oc auth can-i use scc/privileged
+----
+
+You will use the link:https://github.com/spring-projects/spring-petclinic[Spring PetClinic] sample application during this tutorial, which is a simple Spring Boot application.
+
+Create the Kubernetes objects for deploying the PetClinic app on OpenShift. The deployment will not complete since there are no container images built for the PetClinic application yet. That you will do in the following sections through a CI/CD pipeline:
+
+[source,bash,role=execute-1]
+----
+oc create -f sampleapp/petclinic.yaml
+----
+
+You should be able to see the deployment in the OpenShift Web Console.
+
+image:../images/petclinic-deployed-1.png[OpenShift Web Console]
