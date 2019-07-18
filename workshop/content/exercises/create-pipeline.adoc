@@ -57,12 +57,12 @@ To create the `pipeline` above, you will have the option of using the OpenShift 
 
 = OpenShift CLI
 
+The command below uses `oc` to take the `pipeline` definition from above from a GitHub repository and then creates it in your OpenShift project. Run the command to create the `pipeline`:
+
 [source,bash,role=execute-1]
 ----
 oc create -f https://raw.githubusercontent.com/openshift-labs/lab-openshift-pipelines-with-tekton/master/code/exercise/deploy-pipeline.yaml
 ----
-
-The command above uses `oc` to take the `pipeline` definition from above from a GitHub repository and then creates it in your OpenShift project.
 
 = OpenShift Web Console
 
