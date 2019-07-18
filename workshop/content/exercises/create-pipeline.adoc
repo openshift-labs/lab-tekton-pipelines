@@ -57,11 +57,11 @@ To create the `pipeline` above, you will have the option of using the OpenShift 
 
 = OpenShift CLI
 
-The command below uses `oc` to take the `pipeline` definition from above from a GitHub repository and then creates it in your OpenShift project. Run the command to create the `pipeline`:
+The command below uses `oc` to take the `pipeline` definition from above from a local directory and then creates it in your OpenShift project. Run the command to create the `pipeline`:
 
 [source,bash,role=execute-1]
 ----
-oc create -f https://raw.githubusercontent.com/openshift-labs/lab-openshift-pipelines-with-tekton/master/code/exercise/deploy-pipeline.yaml
+oc create -f ./code/exercise/deploy-pipeline.yaml
 ----
 
 = OpenShift Web Console
@@ -72,7 +72,7 @@ image:../images/console-import-yaml-1.png[OpenShift Console - Import Yaml Menu]
 
 image:../images/console-import-yaml-2.png[OpenShift Console - Import Yaml]
 
-You can check the list of `pipelines` you have created using the Tekton CLI:
+You can check the list of `pipelines` you have created using the [Tekton CLI](https://github.com/tektoncd/cli/releases)(`tkn`):
 
 [source,bash,role=execute-1]
 ----
