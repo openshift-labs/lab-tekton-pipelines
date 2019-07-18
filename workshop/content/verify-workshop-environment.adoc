@@ -29,6 +29,8 @@ Did you type the command in yourself? If you did, click on the command here inst
 
 When run, if the response is `yes`, you have the appropriate access.
 
+---------------
+
 TODO: Is there a way to verify the installation of the operator in the cluster?
 
 We also need to verify that the OpenShift Pipelines operator has been enabled in the cluster. To check this, run:
