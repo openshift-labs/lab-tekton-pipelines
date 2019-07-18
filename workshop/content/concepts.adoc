@@ -3,17 +3,17 @@ Tekton defines a number of link:https://kubernetes.io/docs/concepts/extend-kuber
 The custom resources needed to define a pipeline are:
 
 * `Task`: a reusable loosely-coupled number of steps that perform a specific task e.g building a container image
-* `Pipeline`: the definition of the pipeline and the `Task`s that it should perform
+* `Pipeline`: the definition of the pipeline and the `Tasks` that it should perform
 * `PipelineResource`: inputs (e.g. git repository) and outputs (image registry) to and out of a pipeline or task
 * `TaskRun`: the result of running an instance of task
-* `PipelineRun`: the result of running an instance of pipeline, which includes a number of `TaskRun`s
+* `PipelineRun`: the result of running an instance of pipeline, which includes a number of `TaskRuns`
 
 image:images/tekton-architecture.svg[Tekton Architecture]
 
 In short, in order to create a pipeline, one does the following:
 
 * Create custom or install link:https://github.com/tektoncd/catalog[existing] reusable `Tasks`
-* Create a `Pipeline` and `PipelneResource`s to define your application's delivery pipeline
+* Create a `Pipeline` and `PipelneResources` to define your application's delivery pipeline
 * Create a `PipelineRun` to instantiate and invoke the pipeline
 
 For further details on pipeline concepts, refer to the link:https://github.com/tektoncd/pipeline/tree/master/docs#learn-more[Tekton documentation] that provides an excellent guide for understanding various parameters and attributes available for defining pipelines.
