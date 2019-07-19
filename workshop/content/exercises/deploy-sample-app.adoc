@@ -14,14 +14,14 @@ This workshop has created a ServiceAccount with the required permissions to run 
 oc get serviceaccount pipeline
 ----
 
-Now, let's verify that `pipeline` has the appropriate permissions to access the `privileged` Security Context Constrain (SCC):
+Now, let's verify that `pipeline` has the appropriate permissions to access the privileged Security Context Constrain (SCC):
 
 [source,bash,role=execute-1]
 ----
 oc auth can-i use scc/privileged
 ----
 
-= TODO: Add output to verify service account has appropriate permissions
+The command above should return `yes` if `pipeline` has access to SCC.
 
 Now that we have verified the `pipeline` account has appropriate permissions, let's focus on the application that will be deployed during this workshop.
 
