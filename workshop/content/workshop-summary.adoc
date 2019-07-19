@@ -23,7 +23,7 @@ https://github.com/tektoncd/pipeline
 Tekton CLI GitHub:
 https://github.com/tektoncd/cli
 
-While the website is under construction at this time, please lookout in the
+While the Tekton website is under construction at this time, please lookout in the
 future for information about Tekton to be available below:
 https://tekton.dev/
 
