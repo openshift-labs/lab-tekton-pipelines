@@ -7,7 +7,7 @@ development tasks.
 
 We hope you have found this workshop helpful in learning about OpenShift Pipelines
 and would love any feedback you have on ways to make it better! Feel free to open
-issues in this workshop's [GitHub repository](https://github.com/openshift-labs/lab-openshift-pipelines-with-tekton)
+issues in this workshop's link:https://github.com/openshift-labs/lab-openshift-pipelines-with-tekton[GitHub repository]
 but also reach out to your workshop leaders to share any thoughts on how we can
 make this a better experience.
 
