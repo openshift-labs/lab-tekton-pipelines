@@ -32,15 +32,23 @@ spec:
     value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic
 ----
 
-Create the above pipeline resources via the OpenShift web console using the same steps used earlier for creating the `pipeline` or execute the following `oc` commands:
+Create the above pipeline resources via the OpenShift web console using the same steps used earlier for creating the `pipeline` or execute the `oc` commands below.
+
+Add the Git repository input for the `pipeline`:
 
 [source,bash,role=execute-1]
 ----
 oc create -f ./code/exercise/petclinic-git-pipeline-resource.yaml
+----
+
+Add the registry for the Spring PetClinic image to be pushed to as an output for the `pipeline`:
+
+[source,bash,role=execute-1]
+----
 oc create -f ./code/exercise/petclinic-image-pipeline-resource.yaml
 ----
 
-A `pipelinerun` is how you can trigger a `pipeline` and tie it to the Git and image resources that should be used for this specific invocation:
+A `pipelinerun` is how you can trigger a `pipeline` and tie it to the Git and image resources that are used for this specific invocation:
 
 [source,yaml]
 ----
@@ -72,22 +80,29 @@ oc create -f ./code/exercise/petclinic-deploy-pipelinerun.yaml
 
 The `pipeline` you created earlier is now instantiated and creating a number of pods to execute the `tasks` that are defined in the `pipeline`. After a few minutes, the `pipeline` should finish successfully.
 
-[source,bash,role=execute-1]
-----
-# tkn pr ls
-NAME                                 STARTED         DURATION    STATUS
-petclinic-deploy-pipelinerun-lkq7d   7 minutes ago   3 minutes   Succeeded
-----
-
-= TODO: Show how to view pipelinerun through web console
-
-Check the `pipelinerun` logs as it executes:
+To view the `pipelinerun` created, run the following `tkn` command:
 
 [source,bash,role=execute-1]
 ----
-$ tkn pr logs petclinic-deploy-pipelinerun-lkq7d -f
-...
+tkn pr ls
+----
 
+You can view the logs of `pipelinerun` as it executes either through the OpenShift web console or using the Tekton CLI. There are instructions for both options below.
+
+= TODO: Web Console Logs
+
+= Tekton CLI Logs
+
+You'll need to take the name of the `pipelinerun` from the output of `tkn pr ls` and add it to the command below. Next, copy and paste the command below into a terminal and run it with your `pipelinerun` name to see the logs.
+
+[source,bash]
+----
+tkn pr logs REPLACE_WITH_PIPELINERUN_NAME -f
+----
+
+Upon the successful completion of the `pipelinerun`, you will see the following output from the logs:
+
+----
 [s2i-java-8 : nop] Build successful
 
 [openshift-client : oc] deploymentconfig.apps.openshift.io/spring-petclinic rolled out
@@ -98,3 +113,5 @@ $ tkn pr logs petclinic-deploy-pipelinerun-lkq7d -f
 Looking back at the project, you should see that the PetClinic image is successfully built and deployed.
 
 images:images/petclinic-deployed-2.png[PetClinic Deployed]
+
+= TODO: Add how to view successfully deployed application via its route

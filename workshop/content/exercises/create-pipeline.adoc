@@ -72,11 +72,16 @@ image:../images/console-import-yaml-1.png[OpenShift Console - Import Yaml Menu]
 
 image:../images/console-import-yaml-2.png[OpenShift Console - Import Yaml]
 
-You can check the list of `pipelines` you have created using the [Tekton CLI](https://github.com/tektoncd/cli/releases)(`tkn`):
+You can check the list of `pipelines` you have created using the Tekton CLI(`tkn`):
 
 [source,bash,role=execute-1]
 ----
-$ tkn pipeline ls
+tkn pipeline ls
+----
+
+The output should be similar to what is shown below:
+
+----
 NAME             AGE              LAST RUN   STARTED   DURATION   STATUS
 deploy-pipeline  25 seconds ago   ---        ---       ---        ---
 ----
