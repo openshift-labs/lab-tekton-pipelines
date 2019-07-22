@@ -102,6 +102,7 @@ tkn pr logs REPLACE_WITH_PIPELINERUN_NAME -f
 
 Upon the successful completion of the `pipelinerun`, you will see the following output from the logs:
 
+[source,bash]
 ----
 [s2i-java-8 : nop] Build successful
 
