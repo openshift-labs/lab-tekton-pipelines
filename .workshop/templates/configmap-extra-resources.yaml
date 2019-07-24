@@ -3,20 +3,20 @@ kind: Template
 metadata:
   name: configmap-extra-resources
 parameters:
-- name: JUPYTERHUB_NAMESPACE
+- name: SPAWNER_NAMESPACE
   value: ""
   required: true
-- name: JUPYTERHUB_APPLICATION
+- name: SPAWNER_APPLICATION
   value: ""
   required: true
 objects:
 - apiVersion: v1
   kind: ConfigMap
   metadata:
-    name: ${JUPYTERHUB_APPLICATION}-res
-    namespace: ${JUPYTERHUB_NAMESPACE}
+    name: ${SPAWNER_APPLICATION}-res
+    namespace: ${SPAWNER_NAMESPACE}
     labels:
-      app: ${JUPYTERHUB_APPLICATION}-${JUPYTERHUB_NAMESPACE}
+      app: ${SPAWNER_APPLICATION}-${SPAWNER_NAMESPACE}
       spawner: learning-portal
   data:
     extra_resources.json: |-

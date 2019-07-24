@@ -3,10 +3,10 @@ kind: Template
 metadata:
   name: clusterroles-spawner-rules
 parameters:
-- name: JUPYTERHUB_NAMESPACE
+- name: SPAWNER_NAMESPACE
   value: ""
   required: true
-- name: JUPYTERHUB_APPLICATION
+- name: SPAWNER_APPLICATION
   value: ""
   required: true
 objects:
@@ -14,9 +14,9 @@ objects:
   kind: ClusterRole
   metadata:
     labels:
-      app: ${JUPYTERHUB_APPLICATION}-${JUPYTERHUB_NAMESPACE}
+      app: ${SPAWNER_APPLICATION}-${SPAWNER_NAMESPACE}
       spawner: learning-portal
-    name: ${JUPYTERHUB_APPLICATION}-${JUPYTERHUB_NAMESPACE}-spawner-rules
+    name: ${SPAWNER_APPLICATION}-${SPAWNER_NAMESPACE}-spawner-rules
   rules:
   - apiGroups:
     - ""
