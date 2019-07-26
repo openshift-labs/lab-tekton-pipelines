@@ -1,6 +1,6 @@
 Now that the `pipeline` is created, you can trigger it to execute the tasks specified in the `pipeline`. Triggering `pipelines` is an area that is under development and in the next release it will be possible to be done via the OpenShift web console and Tekton CLI. In this tutorial, you will trigger the pipeline through creating the Kubernetes objects (the hard way!) in order to learn the mechanics of triggering.
 
-First, you should create `pipelineresources` that contain the specifics of the Git repository and image registry to be used in the `pipeline` during execution. Expectedly, these are also reusable across multiple pipelines.
+First, you should create `pipelineresources` that contain the specifics of the Git repository and image registry to be used in the `pipeline` during execution. These are also reusable across multiple pipelines.
 
 The following `pipelineresource` defines the Git repository and reference for the PetClinic application:
 
@@ -32,21 +32,37 @@ spec:
     value: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic
 ----
 
-Create the above pipeline resources via the OpenShift web console using the same steps used earlier for creating the `pipeline` or execute the `oc` commands below.
+Create the above `pipelineresources` via the OpenShift web console using the same steps used earlier for creating the `pipeline` or execute the `oc` commands below.
 
 Add the Git repository input for the `pipeline`:
 
 [source,bash,role=execute-1]
 ----
-oc create -f ./code/exercise/petclinic-git-pipeline-resource.yaml
+oc create -f exercise/petclinic-git-pipeline-resource.yaml
 ----
 
 Add the registry for the Spring PetClinic image to be pushed to as an output for the `pipeline`:
 
 [source,bash,role=execute-1]
 ----
-oc create -f ./code/exercise/petclinic-image-pipeline-resource.yaml
+oc create -f exercise/petclinic-image-pipeline-resource.yaml
 ----
+
+You can see the `pipelineresources` created using `tkn`:
+
+[source,bash,role=execute-1]
+----
+tkn resource ls
+----
+
+[source,bash]
+----
+NAME              TYPE    DETAILS
+petclinic-git     git     url: https://github.com/spring-projects/spring-petclinic
+petclinic-image   image   url: image-registry.openshift-image-registry.svc:5000/pipelines-tutorial/spring-petclinic
+----
+
+= TODO: Trigger Pipeline via web console and CLI
 
 A `pipelinerun` is how you can trigger a `pipeline` and tie it to the Git and image resources that are used for this specific invocation:
 
@@ -75,7 +91,7 @@ Create the above `pipelinerun` via the OpenShift web console using the same step
 
 [source,bash,role=execute-1]
 ----
-oc create -f ./code/exercise/petclinic-deploy-pipelinerun.yaml
+oc create -f exercise/petclinic-deploy-pipelinerun.yaml
 ----
 
 The `pipeline` you created earlier is now instantiated and creating a number of pods to execute the `tasks` that are defined in the `pipeline`. After a few minutes, the `pipeline` should finish successfully.

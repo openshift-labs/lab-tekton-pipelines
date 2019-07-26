@@ -61,7 +61,7 @@ The command below uses `oc` to take the `pipeline` definition from above from a 
 
 [source,bash,role=execute-1]
 ----
-oc create -f ./code/exercise/deploy-pipeline.yaml
+oc create -f exercise/deploy-pipeline.yaml
 ----
 
 = OpenShift Web Console
