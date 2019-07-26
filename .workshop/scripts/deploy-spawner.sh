@@ -6,7 +6,7 @@ fail()
     exit 1
 }
 
-WORKSHOP_IMAGE="quay.io/openshiftlabs/lab-openshift-pipelines-with-tekton:1.0"
+WORKSHOP_IMAGE="quay.io/openshiftlabs/lab-openshift-pipelines-with-tekton:master"
 
 RESOURCE_BUDGET="x-large"
 LETS_ENCRYPT=${LETS_ENCRYPT:-false}

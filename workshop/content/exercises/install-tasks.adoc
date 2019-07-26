@@ -23,16 +23,26 @@ spec:
     - install
 ----
 
-When a `task` starts running, it starts a pod and runs each step sequentially in a separate container on the same pod. This `task` happens to have a single step, but `tasks` can have multiple steps, and, since they run within the same pod, they have access to the same volumes in order to cache files, access configmaps, secrets, etc. `Tasks` can also receive inputs (e.g., a git repository) and outputs (e.g., an image in a registry) in order to interact with each other.
+When a `task` starts running, it starts a pod and runs each step sequentially in a separate container on the same pod. The `task` above happens to have a single step, but `tasks` can have multiple steps, and, since they run within the same pod, they have access to the same volumes in order to cache files, access configmaps, secrets, etc. `Tasks` can also receive inputs (e.g., a git repository) and outputs (e.g., an image in a registry) in order to interact with each other.
 
-As mentioned previously, only the requirement for a git repository is declared on the `task` and not a specific git repository to be used. That allows `tasks` to be reusable for multiple `pipelines` and purposes. You can find more examples of reusable `tasks` in the link:https://github.com/tektoncd/catalog[Tekton Catalog] and link:https://github.com/openshift/pipelines-catalog[OpenShift Catalog] repositories.
+For each step as part of a `task`, an image is declared that will be used to host the step as it executes. In the example above, the image specified is `maven:3.6.0-jdk-8-slim`. The `maven:3.6.0-jdk-8-slim` image allows the step to execute a `mvn install` command to add an artifact to a local repository.
 
-Install the `openshift-client` and `s2i-java` tasks from the catalog repository using `oc`, which you will need for creating a pipeline in the next section:
+As mentioned previously, only the requirement for a git repository is declared on the `task` above and not a specific git repository to be used. This allows `tasks` to be reusable for multiple `pipelines` and purposes. You can find more examples of reusable `tasks` in the link:https://github.com/tektoncd/catalog[Tekton Catalog] and link:https://github.com/openshift/pipelines-catalog[OpenShift Catalog] repositories.
+
+Install the `openshift-client` and `s2i-java-8` tasks from the catalog repositories using `oc`.
+
+Create the `s2i-java-8` `task` that will define and build a container image for a Java 8 application and push the image to an image registry:
 
 [source,bash,role=execute-1]
 ----
-oc create -f ./code/tektontasks/openshift-client-task.yaml
-oc create -f ./code/tektontasks/s2i-java-8-task.yaml
+oc create -f tektontasks/s2i-java-8-task.yaml
+----
+
+Create the `openshift-client` `task` that will deploy the image created by `s2i-java-8` as a container on OpenShift:
+
+[source,bash,role=execute-1]
+----
+oc create -f tektontasks/openshift-client-task.yaml
 ----
 
 **NOTE**: For convenience, the `tasks` have been copied from their original location in the link:https://github.com/tektoncd/catalog[Tekton Catalog] to the workshop.
