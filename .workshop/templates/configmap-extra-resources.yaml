@@ -28,7 +28,7 @@ objects:
             "kind": "ServiceAccount",
             "apiVersion": "v1",
             "metadata": {
-              "name": "pipelines"
+              "name": "pipeline"
             }
           },
           {
@@ -40,7 +40,7 @@ objects:
             "subjects": [
               {
                 "kind": "ServiceAccount",
-                "name": "pipelines",
+                "name": "pipeline",
                 "namespace": "${project_namespace}"
               }
             ],
