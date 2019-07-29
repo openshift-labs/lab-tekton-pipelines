@@ -129,6 +129,6 @@ Upon the successful completion of the `pipelinerun`, you will see the following 
 
 Looking back at the project, you should see that the PetClinic image is successfully built and deployed.
 
-images:images/petclinic-deployed-2.png[PetClinic Deployed]
+image:../images/petclinic-deployed-2.png[PetClinic Deployed]
 
 = TODO: Add how to view successfully deployed application via its route

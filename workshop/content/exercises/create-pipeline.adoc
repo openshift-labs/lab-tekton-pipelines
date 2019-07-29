@@ -2,8 +2,6 @@ A `pipeline` defines a number of `tasks` that should be executed and how they in
 
 In this tutorial, you will create a `pipeline` that takes the source code of a Java Spring Boot application (i.e., Spring PetClinic) from GitHub and then builds and deploys it on OpenShift using link:https://docs.openshift.com/container-platform/4.1/builds/understanding-image-builds.html#build-strategy-s2i_understanding-image-builds[Source-to-Image (S2I)].
 
-image:../images/pipeline-diagram.svg[OpenShift OperatorHub]
-
 Below is a YAML file that represents the above pipeline:
 
 [source,yaml]
