@@ -3,8 +3,8 @@ OpenShift Pipelines is a cloud-native, continuous integration and delivery (CI/C
 OpenShift Pipelines features:
 
 * Standard CI/CD pipeline definition based on Tekton
-* Build images with Kubernetes tools such as `S2I`, `Buildah`, `Buildpacks`, `Kaniko`, etc
-* Deploy applications to multiple platforms such as Kubernetes, serverless and VMs
+* Build container images with tools such as `S2I`, `Buildah`, `Buildpacks`, `Kaniko`, etc
+* Deploy applications to multiple platforms such as Kubernetes, serverless, and VMs
 * Easy to extend and integrate with existing tools
 * Scale `pipelines` on-demand
 * Portable across any Kubernetes platform

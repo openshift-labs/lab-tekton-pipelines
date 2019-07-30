@@ -1,6 +1,6 @@
 Tekton defines a number of link:https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/[Kubernetes custom resources] as building blocks in order to standardize pipeline concepts and provide a terminology that is consistent across CI/CD solutions. These custom resources (CR) are an extension of Kubernetes that let users create and interact with these objects using `kubectl` and other Kubernetes tools.
 
-The custom resources needed to define a `pipeline` are:
+The custom resources needed to define a `pipeline` are listed below:
 
 * `Task`: a reusable, loosely coupled number of steps that perform a specific `task` (e.g., building a container image)
 * `Pipeline`: the definition of the `pipeline` and the `tasks` that it should perform

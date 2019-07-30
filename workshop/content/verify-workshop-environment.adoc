@@ -26,9 +26,7 @@ oc auth can-i create Pipeline
 ----
 When run, if the response is `yes`, you have the appropriate access.
 
-Did you type the command in yourself? If you did, click on the icon next to the command instead, and you will find that it is executed for you. You can click on the icon next to any command here in the workshop notes. It will be copied to the interactive terminal and run for you. The icon is shown below:
-
-image:images/glyphicon-play-circle.png[Play,16,16]
+Did you type the command in yourself? If you did, click on the icon next to the command instead, and you will find that it is executed for you. You can click on the icon next to any command here in the workshop notes. It will be copied to the interactive terminal and run for you.
 
 ---------------
 
