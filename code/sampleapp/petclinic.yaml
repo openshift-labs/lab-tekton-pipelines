@@ -81,7 +81,6 @@ spec:
       from:
         kind: ImageStreamTag
         name: spring-petclinic:latest
-        namespace: ${project_namespace}
     type: ImageChange
 ---
 apiVersion: v1
