@@ -59,7 +59,13 @@ echo
 echo "### Install global operator definitions if not already available."
 echo
 
-oc apply -f .workshop/resources/ --recursive
+if [ -d ".workshop/resources/" ]; then
+    oc apply -f .workshop/resources/ --recursive
+else
+    echo
+    echo "### No /resources/ directory found. Continuing deployment."
+    echo
+fi
 
 if [ "$?" != "0" ]; then
     fail "Error: Failed to create global operator definitions."
