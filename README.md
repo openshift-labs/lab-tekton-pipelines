@@ -12,7 +12,7 @@ Installing OpenShift Pipelines Operator
 
 In order to run this workshop, the OpenShift Pipelines operator will need to be globally installed on the cluster that is hosting the workshop.
 
-Installation instructions can be found link:https://github.com/openshift/pipelines-tutorial/blob/master/install-operator.md[here] for installing version 0.5 of the operator.
+Installation instructions can be found [here](https://github.com/openshift/pipelines-tutorial/blob/master/install-operator.md) for installing version 0.5 of the operator.
 
 Deploying the Workshop
 ----------------------
