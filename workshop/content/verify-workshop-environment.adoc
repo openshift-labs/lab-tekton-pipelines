@@ -1,17 +1,19 @@
-The OpenShift Pipelines operator is installed in the platform to monitor requests to create `pipelines` and related resources. The operator can only be deployed and setup by a cluster admin of the OpenShift cluster, as we have previously discussed.
+The OpenShift Pipelines operator is installed to monitor requests to create `pipelines` and related resources. The operator can only be deployed and setup by a cluster admin of the OpenShift cluster, as we have previously discussed.
 
-The OpenShift Pipelines operator has been pre-installed in the cluster and is ready for use during this workshop. Your user has been granted the appropriate permissions to create `pipelines`, `tasks`, `pipelineruns`, and `taskruns` for this workshop.
+The OpenShift Pipelines operator has been pre-installed on the OpenShift cluster for this workshop and is ready for use. Your user has been granted the appropriate permissions to create `pipelines`, `tasks`, `pipelineruns`, and `taskruns` for this workshop.
 
-The OpenShift Pipelines operator provides all it's resources under a single api group `tekton.dev`. To see all the resources provided by the operator:
+The OpenShift Pipelines operator provides all its resources under a single API group: `tekton.dev`. To see all the resources provided by the operator, run the following command:
 
 [source,bash,role=execute]
 ----
 oc api-resources --api-group=tekton.dev
 ----
 
-To validate that your user has been granted the appropriate roles, you can use the `oc auth can-i` command to see whether you can create Kubernetes Custom Resources (CR) of the kind the OpenShift Pipelines operator responds to.
+To validate that your user has been granted the appropriate roles, you can use the `oc auth can-i` command to see whether you can create Kubernetes custom resources of the kind the OpenShift Pipelines operator responds to.
 
-The CR you need to create to declare an OpenShift Pipelines `pipeline` is a resource of the kind `pipeline` in the `tekton.dev` api group. To check that you can create this, run:
+Did you type the command in yourself? If you did, click on the icon next to the command instead, and you will find that it is executed for you. You can click on the icon next to any command here in the workshop notes. It will be copied to the interactive terminal and run for you.
+
+The custom resource you need to create an OpenShift Pipelines `pipeline` is a resource of the kind `pipeline` in the `tekton.dev` API group. To check that you can create this, run:
 
 [source,bash,role=execute]
 ----
@@ -26,26 +28,29 @@ oc auth can-i create Pipeline
 ----
 When run, if the response is `yes`, you have the appropriate access.
 
-Did you type the command in yourself? If you did, click on the icon next to the command instead, and you will find that it is executed for you. You can click on the icon next to any command here in the workshop notes. It will be copied to the interactive terminal and run for you.
-
 ---------------
 
-TODO: Is there a way to verify the installation of the operator in the cluster?
+Verify that you can create the rest of the Tekton custom resources needed for this workshop by running the commands below. All of the commands should respond with `yes`.
 
-We also need to verify that the OpenShift Pipelines operator has been enabled in the cluster. To check this, run:
-
-# TODO: verify namespace and grant permissions to the user to list this deployment
+Verify you can create a Tekton `task`:
 
 [source,bash,role=execute]
 ----
-# oc rollout status deployment/openshift-pipelines-operator -n openshift-operators
+oc auth can-i create Task
 ----
 
-You should see a message:
+Verify you can create a Tekton `pipelineresource`:
 
-[source,bash]
+[source,bash,role=execute]
 ----
-deployment "openshift-pipelines-operator" successfully rolled out
+oc auth can-i create PipelineResource
 ----
 
-Now that we have verified that the operator is properly installed and that you can create the required resources, let's start the workshop.
+Verify you can create a Tekton `pipelinerun`:
+
+[source,bash,role=execute]
+----
+oc auth can-i create PipelineRun
+----
+
+Now that we have verified that you can create the required resources, let's start the workshop.
