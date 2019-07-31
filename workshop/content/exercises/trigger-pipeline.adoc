@@ -138,7 +138,7 @@ Web Console Visualization
 
 You can watch the execution of a `pipelinerun` through the OpenShift web console by clicking on the **Console** tab next to the **Terminal** tab at the center top of the workshop in your browser.
 
-Click on where it says **Administrator** and select the **Developer** option from the dropdown. Next, select the Project dropdown menu and choose to the project namespace you have been working with:
+Click on where it says **Administrator** and select the **Developer** option from the dropdown. Next, select the Project dropdown menu and choose the project namespace you have been working with:
 
 image:../images/web-console-pr.png[Web Console Project]
 
