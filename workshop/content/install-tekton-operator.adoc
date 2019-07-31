@@ -16,7 +16,7 @@ Click on **OpenShift Pipelines Operator**, **Continue**, and then **Install**.
 
 image:images/operator-install-1.png[OpenShift Pipelines Operator]
 
-Leave the default values. The operator will install globally and it will run in the `openshift-operators` project, as this is the pre-configured project for all **Global operators**. Click on **Subscribe** in order to subscribe to the installation and update channels.
+Leave the default values. The operator will install globally and it will run in the `openshift-operators` project, as this is the pre-configured project for all **global operators**. Click on **Subscribe** in order to subscribe to the installation and update channels.
 
 image:images/operator-install-2.png[OpenShift Pipelines Operator]
 
