@@ -26,9 +26,8 @@ Or you can use the simplified version:
 ----
 oc auth can-i create Pipeline
 ----
-When run, if the response is `yes`, you have the appropriate access.
 
----------------
+When run, if the response is `yes`, you have the appropriate access.
 
 Verify that you can create the rest of the Tekton custom resources needed for this workshop by running the commands below. All of the commands should respond with `yes`.
 
