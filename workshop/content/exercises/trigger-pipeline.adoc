@@ -115,7 +115,7 @@ You'll need to take the name of the `pipelinerun` from the output of `tkn pr ls`
 tkn pr logs REPLACE_WITH_PIPELINERUN_NAME -f
 ----
 
-The log output tells you what `tasks` are running as well as what steps is running. You'll see the output structured as `[task : task-step-stepname]`. An example from this `pipelinerun` is below for the generate step of the build `task`:
+The log output tells you what `tasks` are running as well as what steps is running. You'll see the output structured as `[task_name : task_name-step-step_name]`. An example from this `pipelinerun` is below for the generate step of the build `task`:
 
 [source,bash]
 ----
