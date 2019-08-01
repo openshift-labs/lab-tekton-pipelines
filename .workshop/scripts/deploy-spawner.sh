@@ -1,127 +1,197 @@
 #!/bin/bash
 
-fail()
-{
-    echo $* 1>&2
-    exit 1
-}
+SCRIPTS_DIR=`dirname $0`
 
-WORKSHOP_IMAGE="quay.io/openshiftlabs/lab-openshift-pipelines-with-tekton:master"
+echo "### Parsing command line arguments."
 
-RESOURCE_BUDGET="x-large"
-LETS_ENCRYPT=${LETS_ENCRYPT:-false}
+for i in "$@"
+do
+    case $i in
+        --event=*)
+            EVENT_NAME="${i#*=}"
+            shift
+            ;;
+        *)
+            ;;
+    esac
+done
 
-TEMPLATE_REPO=https://raw.githubusercontent.com/openshift-labs/workshop-spawner
-TEMPLATE_VERSION=4.2.0
-TEMPLATE_FILE=learning-portal-production.json
-TEMPLATE_PATH=$TEMPLATE_REPO/$TEMPLATE_VERSION/templates/$TEMPLATE_FILE
+. $SCRIPTS_DIR/setup-environment.sh
 
-SPAWNER_APPLICATION=${SPAWNER_APPLICATION:-lab-openshift-pipelines-with-tekton}
+TEMPLATE_REPO=https://raw.githubusercontent.com/$SPAWNER_REPO
+TEMPLATE_FILE=$SPAWNER_MODE-$SPAWNER_VARIANT.json
+TEMPLATE_PATH=$TEMPLATE_REPO/$SPAWNER_VERSION/templates/$TEMPLATE_FILE
 
-SPAWNER_NAMESPACE=`oc project --short 2>/dev/null`
+echo "### Checking spawner configuration."
 
-if [ "$?" != "0" ]; then
-    fail "Error: Cannot determine name of project."
-    exit 1
+if [[ "$SPAWNER_MODE" =~ ^(hosted-workshop|terminal-server)$ ]]; then
+    if [ x"$CLUSTER_SUBDOMAIN" == x"" ]; then
+        oc create route edge $WORKSHOP_NAME-dummy \
+            --service dummy --port 8080 > /dev/null 2>&1
+
+        if [ "$?" != "0" ]; then
+            fail "Cannot create dummy route $WORKSHOP_NAME-dummy."
+        fi
+
+        DUMMY_FQDN=`oc get route/$WORKSHOP_NAME-dummy -o template --template {{.spec.host}}`
+
+        if [ "$?" != "0" ]; then
+            fail "Cannot determine host from dummy route."
+        fi
+
+        DUMMY_HOST=$WORKSHOP_NAME-dummy-$PROJECT_NAME
+        CLUSTER_SUBDOMAIN=`echo $DUMMY_FQDN | sed -e "s/^$DUMMY_HOST.//"`
+
+        if [ x"$CLUSTER_SUBDOMAIN" == x"$DUMMY_FQDN" ]; then
+            CLUSTER_SUBDOMAIN=""
+        fi
+
+        oc delete route $WORKSHOP_NAME-dummy > /dev/null 2>&1
+
+        if [ "$?" != "0" ]; then
+            warn "Cannot delete dummy route."
+        fi
+    fi
+
+    if [ x"$CLUSTER_SUBDOMAIN" == x"" ]; then
+        read -p "CLUSTER_SUBDOMAIN: " CLUSTER_SUBDOMAIN
+
+        CLUSTER_SUBDOMAIN=$(trim $CLUSTER_SUBDOMAIN)
+
+        if [ x"$CLUSTER_SUBDOMAIN" == x"" ]; then
+            fail "Must provide valid CLUSTER_SUBDOMAIN."
+        fi
+    fi
 fi
 
-echo
 echo "### Creating spawner application."
-echo
+
+TEMPLATE_ARGS=""
+
+if [ x"$SPAWNER_MODE" == x"learning-portal" ]; then
+    TEMPLATE_ARGS="$TEMPLATE_ARGS --param RESOURCE_BUDGET=$RESOURCE_BUDGET"
+    TEMPLATE_ARGS="$TEMPLATE_ARGS --param HOMEROOM_LINK=$HOMEROOM_LINK"
+    TEMPLATE_ARGS="$TEMPLATE_ARGS --param CONSOLE_IMAGE=$CONSOLE_IMAGE"
+    TEMPLATE_ARGS="$TEMPLATE_ARGS --param SERVER_LIMIT=$SERVER_LIMIT"
+    TEMPLATE_ARGS="$TEMPLATE_ARGS --param MAX_SESSION_AGE=$MAX_SESSION_AGE"
+fi
+
+if [ x"$SPAWNER_MODE" == x"user-workspace" ]; then
+    TEMPLATE_ARGS="$TEMPLATE_ARGS --param RESOURCE_BUDGET=$RESOURCE_BUDGET"
+    TEMPLATE_ARGS="$TEMPLATE_ARGS --param HOMEROOM_LINK=$HOMEROOM_LINK"
+    TEMPLATE_ARGS="$TEMPLATE_ARGS --param CONSOLE_IMAGE=$CONSOLE_IMAGE"
+fi
+
+if [ x"$SPAWNER_MODE" == x"hosted-workshop" ]; then
+    TEMPLATE_ARGS="$TEMPLATE_ARGS --param CLUSTER_SUBDOMAIN=$CLUSTER_SUBDOMAIN"
+    TEMPLATE_ARGS="$TEMPLATE_ARGS --param CONSOLE_IMAGE=$CONSOLE_IMAGE"
+fi
+
+if [ x"$SPAWNER_MODE" == x"terminal-server" ]; then
+    TEMPLATE_ARGS="$TEMPLATE_ARGS --param CLUSTER_SUBDOMAIN=$CLUSTER_SUBDOMAIN"
+    TEMPLATE_ARGS="$TEMPLATE_ARGS --param CONSOLE_IMAGE=$CONSOLE_IMAGE"
+fi
+
+if [ x"$SPAWNER_MODE" == x"jumpbox-server" ]; then
+    true
+fi
 
 oc process -f $TEMPLATE_PATH \
-    --param APPLICATION_NAME="$SPAWNER_APPLICATION" \
-    --param PROJECT_NAME="$SPAWNER_NAMESPACE" \
-    --param RESOURCE_BUDGET="$RESOURCE_BUDGET" \
-    --param HOMEROOM_LINK="$HOMEROOM_LINK" \
+    --param PROJECT_NAME=$PROJECT_NAME \
+    --param APPLICATION_NAME=$SPAWNER_APPLICATION \
     --param GATEWAY_ENVVARS="$GATEWAY_ENVVARS" \
     --param TERMINAL_ENVVARS="$TERMINAL_ENVVARS" \
     --param WORKSHOP_ENVVARS="$WORKSHOP_ENVVARS" \
-    --param LETS_ENCRYPT="$LETS_ENCRYPT" | oc apply -f -
+    --param IDLE_TIMEOUT=$IDLE_TIMEOUT \
+    --param JUPYTERHUB_CONFIG="$JUPYTERHUB_CONFIG" \
+    --param LETS_ENCRYPT=$LETS_ENCRYPT \
+    $TEMPLATE_ARGS | oc apply -f -
 
 if [ "$?" != "0" ]; then
-    fail "Error: Failed to create deployment for spawner."
+    fail "Failed to create deployment for spawner."
     exit 1
 fi
 
-echo
 echo "### Waiting for the spawner to deploy."
-echo
 
 oc rollout status dc/"$SPAWNER_APPLICATION"
 
 if [ "$?" != "0" ]; then
-    fail "Error: Deployment of spawner failed to complete."
+    fail "Deployment of spawner failed to complete."
     exit 1
 fi
 
-echo
-echo "### Install global operator definitions if not already available."
-echo
+echo "### Install static resource definitions."
 
-if [ -d ".workshop/resources/" ]; then
-    oc apply -f .workshop/resources/ --recursive
-else
-    echo
-    echo "### No /resources/ directory found. Continuing deployment."
-    echo
+if [ -d $WORKSHOP_DIR/resources/ ]; then
+    oc apply -f $WORKSHOP_DIR/resources/ --recursive
+
+    if [ "$?" != "0" ]; then
+        fail "Failed to create static resource definitions."
+        exit 1
+    fi
 fi
 
-if [ "$?" != "0" ]; then
-    fail "Error: Failed to create global operator definitions."
-    exit 1
-fi
-
-echo
 echo "### Update spawner configuration for workshop."
-echo
 
-oc process -f .workshop/templates/clusterroles-session-rules.yaml \
-     --param SPAWNER_APPLICATION="$SPAWNER_APPLICATION" \
-     --param SPAWNER_NAMESPACE="$SPAWNER_NAMESPACE" | oc apply -f - && \
-oc process -f .workshop/templates/clusterroles-spawner-rules.yaml \
-     --param SPAWNER_APPLICATION="$SPAWNER_APPLICATION" \
-     --param SPAWNER_NAMESPACE="$SPAWNER_NAMESPACE" | oc apply -f - && \
-oc process -f .workshop/templates/configmap-extra-resources.yaml \
-     --param SPAWNER_APPLICATION="$SPAWNER_APPLICATION" \
-     --param SPAWNER_NAMESPACE="$SPAWNER_NAMESPACE" | oc apply -f -
+if [ -f $WORKSHOP_DIR/templates/clusterroles-session-rules.yaml ]; then
+    oc process -f $WORKSHOP_DIR/templates/clusterroles-session-rules.yaml \
+        --param SPAWNER_APPLICATION="$SPAWNER_APPLICATION" \
+        --param SPAWNER_NAMESPACE="$PROJECT_NAME" | oc apply -f -
 
-if [ "$?" != "0" ]; then
-    fail "Error: Failed to udpate spawner configuration for workshop."
-    exit 1
+    if [ "$?" != "0" ]; then
+        fail "Failed to update session rules for workshop."
+        exit 1
+    fi
 fi
 
-echo
+if [ -f $WORKSHOP_DIR/templates/clusterroles-spawner-rules.yaml ]; then
+    oc process -f $WORKSHOP_DIR/templates/clusterroles-spawner-rules.yaml \
+        --param SPAWNER_APPLICATION="$SPAWNER_APPLICATION" \
+        --param SPAWNER_NAMESPACE="$PROJECT_NAME" | oc apply -f -
+
+    if [ "$?" != "0" ]; then
+        fail "Failed to update spawner rules for workshop."
+        exit 1
+    fi
+fi
+
+if [ -f $WORKSHOP_DIR/templates/configmap-extra-resources.yaml ]; then
+    oc process -f $WORKSHOP_DIR/templates/configmap-extra-resources.yaml \
+        --param SPAWNER_APPLICATION="$SPAWNER_APPLICATION" \
+        --param SPAWNER_NAMESPACE="$PROJECT_NAME" | oc apply -f -
+
+    if [ "$?" != "0" ]; then
+        fail "Failed to update extra resources for workshop."
+        exit 1
+    fi
+fi
+
 echo "### Restart the spawner with new configuration."
-echo
 
 oc rollout latest dc/"$SPAWNER_APPLICATION"
 
 if [ "$?" != "0" ]; then
-    fail "Error: Failed to restart the spawner."
+    fail "Failed to restart the spawner."
     exit 1
 fi
 
 oc rollout status dc/"$SPAWNER_APPLICATION"
 
 if [ "$?" != "0" ]; then
-    fail "Error: Deployment of spawner failed to complete."
+    fail "Deployment of spawner failed to complete."
     exit 1
 fi
 
-echo
 echo "### Updating spawner to use image for workshop."
-echo
 
-oc tag "$WORKSHOP_IMAGE" "${SPAWNER_APPLICATION}-app:latest"
+oc tag "$WORKSHOP_IMAGE" "$SPAWNER_APPLICATION:latest"
 
 if [ "$?" != "0" ]; then
-    fail "Error: Failed to update spawner to use workshop image."
+    fail "Failed to update spawner to use workshop image."
     exit 1
 fi
 
-echo
 echo "### Route details for the spawner are as follows."
-echo
 
 oc get route "${SPAWNER_APPLICATION}"

@@ -1,10 +1,9 @@
 #!/bin/bash
 
-set -x
-set -eo pipefail
+SCRIPTS_DIR=`dirname $0`
 
-WORKSHOP_NAME="lab-openshift-pipelines-with-tekton"
-#JUPYTERHUB_APPLICATION = ${JUPYTERHUB_APPLICATION:-lab-openshift-pipelines-with-tekton}
-#JUPYTERHUB_NAMESPACE = `oc project --short`
+. $SCRIPTS_DIR/setup-environment.sh
+
+echo "### Delete build configuation."
 
 oc delete all --selector build="$WORKSHOP_NAME"
