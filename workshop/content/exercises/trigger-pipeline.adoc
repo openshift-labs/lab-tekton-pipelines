@@ -140,7 +140,7 @@ You can watch the execution of a `pipelinerun` through the OpenShift web console
 
 Click on where it says **Administrator** and select the **Developer** option from the dropdown. Next, select the Project dropdown menu and choose the project namespace you have been working with:
 
-image:../images/web-console-pr.png[Web Console Project]
+image:../images/web-console-project.png[Web Console Project]
 
 You can run the command below if you don't remember your project:
 
