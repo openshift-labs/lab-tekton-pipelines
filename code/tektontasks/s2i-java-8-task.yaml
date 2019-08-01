@@ -26,6 +26,13 @@ spec:
       volumeMounts:
         - name: gen-source
           mountPath: /gen-source
+      resources:
+        limits:
+          cpu: 500m
+          memory: 1Gi
+        requests:
+          cpu: 250m
+          memory: 256Mi
     - name: build
       image: quay.io/buildah/stable
       workingdir: /gen-source
@@ -37,6 +44,13 @@ spec:
           mountPath: /gen-source
       securityContext:
         privileged: true
+      resources:
+        limits:
+          cpu: 500m
+          memory: 1Gi
+        requests:
+          cpu: 250m
+          memory: 256Mi
     - name: push
       image: quay.io/buildah/stable
       command: ['buildah', 'push', '--tls-verify=${inputs.params.TLSVERIFY}', '${outputs.resources.image.url}', 'docker://${outputs.resources.image.url}']
@@ -45,6 +59,13 @@ spec:
           mountPath: /var/lib/containers
       securityContext:
         privileged: true
+      resources:
+        limits:
+          cpu: 500m
+          memory: 1Gi
+        requests:
+          cpu: 250m
+          memory: 256Mi
   volumes:
     - name: varlibcontainers
       emptyDir: {}

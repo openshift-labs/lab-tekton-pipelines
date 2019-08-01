@@ -53,7 +53,8 @@ The execution order of `tasks` is determined based on the dependencies that are 
 
 To create the `pipeline` above, you will have the option of using the OpenShift CLI (`oc`) or using the OpenShift Web Console:
 
-= OpenShift CLI
+OpenShift CLI
+-------------
 
 The command below uses `oc` to take the `pipeline` definition from above from a local directory and then creates it in your OpenShift project. Run the command to create the `pipeline`:
 
@@ -62,7 +63,8 @@ The command below uses `oc` to take the `pipeline` definition from above from a 
 oc create -f exercise/deploy-pipeline.yaml
 ----
 
-= OpenShift Web Console
+OpenShift Web Console
+---------------------
 
 Alternatively, in the OpenShift web console, you can click on **Add &#8594; Import YAML** at the top right of the screen while you are in the **pipelines-tutorial** project, paste the YAML into the textfield, and click on **Create**.
 
