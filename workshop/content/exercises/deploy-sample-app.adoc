@@ -14,8 +14,6 @@ This workshop has created a `ServiceAccount` with the required permissions to ru
 oc get serviceaccount pipeline
 ----
 
-Now that we have verified the `pipeline` account has appropriate permissions, let's focus on the application that will be deployed during this workshop.
-
 You will use the link:https://github.com/spring-projects/spring-petclinic[Spring PetClinic] sample application during this tutorial, which is a simple Spring Boot application.
 
 Create the Kubernetes objects for deploying the PetClinic app on OpenShift by running the command below. The deployment will not complete since there are no container images built for the PetClinic application yet. That you will do in the following sections through a CI/CD pipeline.
