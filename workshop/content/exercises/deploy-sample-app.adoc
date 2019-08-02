@@ -7,23 +7,12 @@ oc project -q
 
 Building container images using build tools such as `S2I`, `Buildah`, `Kaniko`, etc require privileged access to the cluster. OpenShift default security settings do not allow access to privileged containers unless specifically configured.
 
-This workshop has created a `ServiceAccount` with the required permissions to run privileged pods for building images. The name of this service account is easy to remember. It is named `pipeline`. You can view information about `pipeline` by running the command below:
+This workshop has created a `ServiceAccount` with the required permissions to run privileged pods for building images. The name of this service account is easy to remember. It is named `pipeline`. You can verify that `pipeline` has been created by running the following command:
 
 [source,bash,role=execute-1]
 ----
 oc get serviceaccount pipeline
 ----
-
-Now, let's verify that `pipeline` has the appropriate permissions to access the privileged Security Context Constrain (SCC):
-
-[source,bash,role=execute-1]
-----
-oc auth can-i use scc/privileged
-----
-
-The command above should return `yes` if `pipeline` has access to SCC.
-
-Now that we have verified the `pipeline` account has appropriate permissions, let's focus on the application that will be deployed during this workshop.
 
 You will use the link:https://github.com/spring-projects/spring-petclinic[Spring PetClinic] sample application during this tutorial, which is a simple Spring Boot application.
 
