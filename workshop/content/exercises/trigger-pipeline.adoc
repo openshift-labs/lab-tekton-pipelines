@@ -166,4 +166,6 @@ Looking back at the project, you should see that the PetClinic image is successf
 
 image:../images/petclinic-deployed-2.png[PetClinic Deployed]
 
-= TODO: Add how to view successfully deployed application via its route
+You can view the running application by visiting:
+
+http://spring-petclinic-%project_namespace%.%cluster_subdomain%
