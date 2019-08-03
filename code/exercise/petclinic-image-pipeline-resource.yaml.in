@@ -8,4 +8,4 @@ spec:
   type: image
   params:
   - name: url
-    value: ${OPENSHIFT_IMAGE_REGISTRY}/pipelines-tutorial/spring-petclinic
+    value: ${OPENSHIFT_IMAGE_REGISTRY}/${PROJECT_NAMESPACE}/spring-petclinic
