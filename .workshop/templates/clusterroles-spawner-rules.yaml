@@ -35,6 +35,20 @@ objects:
     verbs:
     - bind
   - apiGroups:
+    - ""
+    - authorization.openshift.io
+    - rbac.authorization.k8s.io
+    resources:
+    - clusterroles
+    verbs:
+    - get
+    - list
+    - watch
+    - create
+    - delete
+    - patch
+    - update
+  - apiGroups:
     - security.openshift.io 
     resources:
     - securitycontextconstraints 
