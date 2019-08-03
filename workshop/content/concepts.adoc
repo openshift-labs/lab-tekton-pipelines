@@ -13,7 +13,7 @@ image:images/tekton-architecture.svg[Tekton Architecture]
 In short, in order to create a `pipeline`, one does the following:
 
 * Create custom or install link:https://github.com/tektoncd/catalog[existing] reusable `tasks`
-* Create a `pipeline` and `pipelneresources` to define your application's delivery `pipeline`
+* Create a `pipeline` and `pipelineresources` to define your application's delivery `pipeline`
 * Create a `pipelinerun` to instantiate and invoke the `pipeline`
 
 For further details on pipeline concepts, refer to the link:https://github.com/tektoncd/pipeline/tree/master/docs#learn-more[Tekton documentation] that provides an excellent guide for understanding various parameters and attributes available for defining `pipelines`.
