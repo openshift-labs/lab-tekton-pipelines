@@ -108,29 +108,34 @@ You can view the logs of `pipelinerun` as it executes using the Tekton CLI and a
 Tekton CLI Logs
 ---------------
 
-You'll need to take the name of the `pipelinerun` from the output of `tkn pr ls` and add it to the command below. Next, copy and paste the command below into the lower terminal and run it with your `pipelinerun` name to see the logs:
+To view the log for the `pipelinerun` you need the unique name assigned to it when you ran `tkn pipeline start`. This is the same name as `tkn pr ls` outputs and actually corresponds to the name of the pod for the `pipelinerun`.
+
+To grab the name of this into an environment variable, run:
+
+[source,bash,role=execute-1]
+----
+POD=`tkn pr ls -o jsonpath='{$.items[?(@.status.conditions[0].reason=="Running")].metadata.name}' | tr ' ' '\n' | head -1`; echo $POD
+----
+
+Then run:
+
+[source,bash,role=execute-1]
+----
+tkn pr logs $POD -f
+----
+
+The log output tells you what `tasks` are running as well as what step it is running. You'll see the output structured as `[task_name : task_name-step-step_name]`. An example from this `pipelinerun` is below for the generate step of the build `task`:
 
 [source,bash]
 ----
-tkn pr logs REPLACE_WITH_PIPELINERUN_NAME -f
-----
-
-The log output tells you what `tasks` are running as well as what steps is running. You'll see the output structured as `[task_name : task_name-step-step_name]`. An example from this `pipelinerun` is below for the generate step of the build `task`:
-
-[source,bash]
-----
-[build : build-step-generate]
+[build : generate]
 ----
 
 Upon the successful completion of the `pipelinerun`, you will see the following output from the logs:
 
 [source,bash]
 ----
-[s2i-java-8 : nop] Build successful
-
-[openshift-client : oc] deploymentconfig.apps.openshift.io/spring-petclinic rolled out
-
-[openshift-client : nop] Build successful
+[deploy : oc] deploymentconfig.apps.openshift.io/spring-petclinic rolled out
 ----
 
 Web Console Visualization
