@@ -66,7 +66,7 @@ oc create -f exercise/deploy-pipeline.yaml
 OpenShift Web Console
 ---------------------
 
-Alternatively, in the OpenShift web console, you can click on **Add &#8594; Import YAML** at the top right of the screen while you are in the **pipelines-tutorial** project, paste the YAML into the textfield, and click on **Create**.
+Alternatively, in the OpenShift web console, you can click on **Add &#8594; Import YAML** at the top right of the screen while you are in your project, paste the YAML into the textfield, and click on **Create**.
 
 image:../images/console-import-yaml-1.png[OpenShift Console - Import Yaml Menu]
 

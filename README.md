@@ -19,6 +19,14 @@ Deploying the Workshop
 
 To deploy the workshop, first clone this Git repository to your own machine.
 
+When you clone the repository, ensure you use the `--recurse-submodules` option with the `git clone` command. Alternatively, after having cloned the repository, within the repository directory, run:
+
+```
+git submodule update --init --recursive
+```
+
+The option to `git clone`, or the `git submodule update` command, ensure that a copy of a Git submodule which contains scripts to help you deploy the workshop will also be cloned.
+
 Next create a project in OpenShift into which the workshop is to be deployed.
 
 ```
@@ -71,6 +79,14 @@ Note that if you do this, you will need to re-run:
 ```
 
 to have any local content changes be used once again as it will revert back to using the image on ``quay.io``.
+
+If you need to ever update the deployment scripts pulled in via a git submodule to the latest version, run:
+
+```
+git submodule update --recursive --remote
+```
+
+The update will be staged immediately, so don't forget to commit it.
 
 Deleting the Workshop
 ---------------------
