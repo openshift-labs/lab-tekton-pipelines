@@ -29,7 +29,7 @@ spec:
   type: image
   params:
   - name: url
-    value: %image_registry%/pipelines-tutorial/spring-petclinic
+    value: %image_registry%/%project_namespace%/spring-petclinic
 ----
 
 Create the above `pipelineresources` via the OpenShift web console using the same steps used earlier for creating the `pipeline` or execute the `oc` commands below.
