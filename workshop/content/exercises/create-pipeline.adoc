@@ -79,7 +79,7 @@ You can see the `pipeline` you have created using `tkn`:
 tkn pipeline ls
 ----
 
-In the next section, you will focus on
+In the next section, you will focus on creating Tekton `pipelineresources` and triggering a `pipelinerun`. Clear your terminal before continuing: 
 
 [source,bash,role=execute-1]
 ----
