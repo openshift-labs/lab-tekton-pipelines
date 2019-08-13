@@ -78,3 +78,10 @@ You can see the `pipeline` you have created using `tkn`:
 ----
 tkn pipeline ls
 ----
+
+In the next section, you will focus on
+
+[source,bash,role=execute-1]
+----
+clear
+----

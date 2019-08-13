@@ -2,3 +2,4 @@
 .config
 .bash_history
 *.swp
+.DS_Store

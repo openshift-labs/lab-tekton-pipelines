@@ -62,3 +62,10 @@ NAME               AGE
 openshift-client   58 seconds ago
 s2i-java-8         1 minute ago
 ----
+
+In the next section, you'll create a Tekton `pipeline`. Clear your terminal before continuing:
+
+[source,bash,role=execute-1]
+----
+clear
+----

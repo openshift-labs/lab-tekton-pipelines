@@ -52,4 +52,9 @@ Verify you can create a Tekton `pipelinerun`:
 oc auth can-i create PipelineRun
 ----
 
-Now that we have verified that you can create the required resources, let's start the workshop.
+Now that we have verified that you can create the required resources, let's start the workshop. Clear your terminal before continuing:
+
+[source,bash,role=execute-1]
+----
+clear
+----

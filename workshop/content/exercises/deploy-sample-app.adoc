@@ -28,3 +28,10 @@ You should be able to see the deployment in the OpenShift Web Console.
 To bring up the web console, click on the **Console** tab. From the **Projects** list, click on your project and the click on the **Workloads** tab. Alternatively click on this link:%console_url%/k8s/cluster/projects/%project_namespace%/workloads[workloads] link.
 
 image:../images/petclinic-deployed-1.png[OpenShift Web Console]
+
+In the next section, you'll learn how to use Tekton `tasks`. Clear your terminal before continuing:
+
+[source,bash,role=execute-1]
+----
+clear
+----

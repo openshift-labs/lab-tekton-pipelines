@@ -31,8 +31,8 @@ spec:
           cpu: 500m
           memory: 1Gi
         requests:
-          cpu: 250m
-          memory: 256Mi
+          cpu: 500m
+          memory: 1Gi
     - name: build
       image: quay.io/buildah/stable
       workingdir: /gen-source
@@ -49,8 +49,8 @@ spec:
           cpu: 500m
           memory: 1Gi
         requests:
-          cpu: 250m
-          memory: 256Mi
+          cpu: 500m
+          memory: 1Gi
     - name: push
       image: quay.io/buildah/stable
       command: ['buildah', 'push', '--tls-verify=${inputs.params.TLSVERIFY}', '${outputs.resources.image.url}', 'docker://${outputs.resources.image.url}']
@@ -64,8 +64,8 @@ spec:
           cpu: 500m
           memory: 1Gi
         requests:
-          cpu: 250m
-          memory: 256Mi
+          cpu: 500m
+          memory: 1Gi
   volumes:
     - name: varlibcontainers
       emptyDir: {}

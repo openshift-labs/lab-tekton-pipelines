@@ -37,16 +37,6 @@ spec:
       containers:
       - image: spring-petclinic:latest
         imagePullPolicy: Always
-        livenessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /
-            port: 8080
-            scheme: HTTP
-          initialDelaySeconds: 45
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 1
         name: spring-petclinic
         ports:
         - containerPort: 8080
@@ -55,16 +45,6 @@ spec:
           protocol: TCP
         - containerPort: 8778
           protocol: TCP
-        readinessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /
-            port: 8080
-            scheme: HTTP
-          initialDelaySeconds: 45
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 5
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
