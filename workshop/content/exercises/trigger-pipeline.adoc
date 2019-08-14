@@ -1,51 +1,51 @@
 Now that the `pipeline` is created, you can trigger it to execute the `tasks` specified on the `pipeline`. As mentioned earlier, a `pipelinerun` is the custom resource used to trigger a `pipeline`. In this exercise, you will create a `pipelinerun` via `tkn` to deploy the Spring PetClinic application out to OpenShift.
 
-First, you should create `pipelineresources` that contain the specifics of the Git repository and image registry to be used in the `pipeline` during execution. These are also reusable across multiple pipelines.
+First, you should create `pipelineresources` that contain the specifics of the git repository and image registry to be used in the `pipeline` during execution. These are also reusable across multiple pipelines.
 
-The following `pipelineresource` defines the Git repository and reference for the PetClinic application:
+The following `pipelineresource` defines the git repository and reference for the nodejs-ex application:
 
 [source,yaml]
 ----
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: petclinic-git
+  name: nodejs-ex-git
 spec:
   type: git
   params:
   - name: url
-    value: https://github.com/spring-projects/spring-petclinic
+    value: https://github.com/sclorg/nodejs-ex
 ----
 
-And the following defines the OpenShift internal registry for the PetClinic image to be pushed to:
+And the following defines the OpenShift internal registry for the nodejs-ex image to be pushed to:
 
 [source,yaml]
 ----
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: petclinic-image
+  name: nodejs-ex-image
 spec:
   type: image
   params:
   - name: url
-    value: %image_registry%/%project_namespace%/spring-petclinic
+    value: %image_registry%/%project_namespace%/nodejs-ex
 ----
 
 Create the above `pipelineresources` via the OpenShift web console using the same steps used earlier for creating the `pipeline` or execute the `oc` commands below.
 
-Add the Git repository input for the `pipeline`:
+Add the git repository input for the `pipeline`:
 
 [source,bash,role=execute-1]
 ----
-oc create -f exercise/petclinic-git-pipeline-resource.yaml
+oc create -f exercise/git-pipeline-resource.yaml
 ----
 
-Add the registry for the Spring PetClinic image to be pushed to as an output for the `pipeline`:
+Add the registry for the image to be pushed to as an output of the build `task` of the `pipeline`:
 
 [source,bash,role=execute-1]
 ----
-oc create -f exercise/petclinic-image-pipeline-resource.yaml
+oc create -f exercise/image-pipeline-resource.yaml
 ----
 
 You can see the `pipelineresources` created using `tkn`:
@@ -62,7 +62,7 @@ The `pipelinerun` definition below is how you can trigger the `pipeline` and tie
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineRun
 metadata:
-  generateName: petclinic-deploy-pipelinerun-
+  generateName: deploy-pipelinerun-
 spec:
   pipelineRef:
     name: deploy-pipeline
@@ -72,10 +72,10 @@ spec:
   resources:
   - name: app-git
     resourceRef:
-      name: petclinic-git
+      name: nodejs-ex-git
   - name: app-image
     resourceRef:
-      name: petclinic-image
+      name: nodejs-ex-image
 ----
 
 Under the `spec` property, you'll see the `pipelineRef` property where the `pipeline` to be used is specified.
@@ -89,8 +89,8 @@ While learning about the resource definition behind a `pipelinerun` is important
 [source,bash,role=execute-1]
 ----
 tkn pipeline start deploy-pipeline \
-        -r app-git=petclinic-git \
-        -r app-image=petclinic-image \
+        -r app-git=nodejs-ex-git \
+        -r app-image=nodejs-ex-image \
         -s pipeline
 ----
 
@@ -124,7 +124,7 @@ Then run:
 tkn pr logs $POD -f
 ----
 
-The log output tells you what `tasks` are running as well as what step it is running. You'll see the output structured as `[task_name : task_name-step-step_name]`. An example from this `pipelinerun` is below for the generate step of the build `task`:
+The log output tells you what `tasks` are running as well as what step it is running. You'll see the output structured as `[task_name : step_name]`. An example from this `pipelinerun` is below for the generate step of the build `task`:
 
 [source,bash]
 ----
@@ -135,7 +135,7 @@ Upon the successful completion of the `pipelinerun`, you will see the following 
 
 [source,bash]
 ----
-[deploy : oc] deploymentconfig.apps.openshift.io/spring-petclinic rolled out
+[deploy : oc] deploymentconfig.apps.openshift.io/nodejs-ex rolled out
 ----
 
 Web Console Visualization
@@ -167,10 +167,10 @@ Since this is not the official OpenShift 4.2 web console, you will not be able t
 Verify Deployment
 -----------------
 
-Looking back at the project, you should see that the PetClinic image is successfully built and deployed.
+Looking back at the project, you should see that the nodejs-ex image is successfully built and deployed.
 
 image:../images/petclinic-deployed-2.png[PetClinic Deployed]
 
 You can view the running application by visiting:
 
-http://spring-petclinic-%project_namespace%.%cluster_subdomain%
+http://nodejs-ex-%project_namespace%.%cluster_subdomain%

@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineRun
 metadata:
-  generateName: petclinic-deploy-pipelinerun-
+  generateName: deploy-pipelinerun-
   labels:
     app: tekton-workshop
 spec:
@@ -13,7 +13,7 @@ spec:
   resources:
   - name: app-git
     resourceRef:
-      name: petclinic-git
+      name: nodejs-ex-git
   - name: app-image
     resourceRef:
-      name: petclinic-image
+      name: nodejs-ex-image

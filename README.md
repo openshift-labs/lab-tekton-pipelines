@@ -1,6 +1,8 @@
 Lab - OpenShift Pipelines with Tekton
 ====================
 
+Please be aware that this workshop is being developed at this time. However, all feedback and contributions to the project are welcome.
+
 This workshop provides an introduction to OpenShift Pipelines with Tekton.
 
 The workshop uses the HomeRoom workshop environment in the learning portal configuration. You will need to be a cluster admin in order to deploy it.
@@ -12,7 +14,7 @@ Installing OpenShift Pipelines Operator
 
 In order to run this workshop, the OpenShift Pipelines operator will need to be globally installed on the cluster that is hosting the workshop.
 
-Installation instructions can be found [here](https://github.com/openshift/pipelines-tutorial/blob/master/install-operator.md) for installing version 0.5 of the operator.
+Installation instructions can be found [here](https://github.com/openshift/pipelines-tutorial/blob/master/install-operator.md) for installing the latest version of the operator.
 
 Deploying the Workshop
 ----------------------

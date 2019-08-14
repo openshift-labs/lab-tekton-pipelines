@@ -29,16 +29,16 @@ For each step as part of a `task`, an image is declared that will be used to hos
 
 As mentioned previously, only the requirement for a git repository is declared on the `task` above and not a specific git repository to be used. This allows `tasks` to be reusable for multiple `pipelines` and purposes. You can find more examples of reusable `tasks` in the link:https://github.com/tektoncd/catalog[Tekton Catalog] and link:https://github.com/openshift/pipelines-catalog[OpenShift Catalog] repositories.
 
-Install the `openshift-client` and `s2i-java-8` tasks from the catalog repositories using `oc`.
+Install the `openshift-client` and `s2i-nodejs` tasks from the catalog repositories using `oc`.
 
-Create the `s2i-java-8` `task` that will define and build a container image for a Java 8 application and push the image to an image registry:
+Create the `s2i-nodejs` `task` that will define and build a container image for a nodejs-ex application and push the resulting image to an image registry:
 
 [source,bash,role=execute-1]
 ----
-oc create -f tektontasks/s2i-java-8-task.yaml
+oc create -f tektontasks/s2i-nodejs-task.yaml
 ----
 
-Create the `openshift-client` `task` that will deploy the image created by `s2i-java-8` as a container on OpenShift:
+Create the `openshift-client` `task` that will deploy the image created by `s2i-nodejs` as a container on OpenShift:
 
 [source,bash,role=execute-1]
 ----
@@ -60,7 +60,7 @@ You should see similar output to this:
 ----
 NAME               AGE
 openshift-client   58 seconds ago
-s2i-java-8         1 minute ago
+s2i-nodejs         1 minute ago
 ----
 
 In the next section, you'll create a Tekton `pipeline`. Clear your terminal before continuing:
