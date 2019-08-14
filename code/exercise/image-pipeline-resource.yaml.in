@@ -1,11 +1,11 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: petclinic-git
+  name: nodejs-ex-image
   labels:
     app: tekton-workshop
 spec:
-  type: git
+  type: image
   params:
   - name: url
-    value: https://github.com/spring-projects/spring-petclinic
+    value: ${OPENSHIFT_IMAGE_REGISTRY}/${PROJECT_NAMESPACE}/nodejs-ex

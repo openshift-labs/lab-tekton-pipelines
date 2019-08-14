@@ -13,7 +13,7 @@ spec:
   tasks:
   - name: build
     taskRef:
-      name: s2i-java-8
+      name: s2i-nodejs
     params:
       - name: TLSVERIFY
         value: "false"
@@ -31,4 +31,4 @@ spec:
       - build
     params:
     - name: ARGS
-      value: "rollout latest spring-petclinic"
+      value: "rollout latest nodejs-ex"

@@ -7,4 +7,4 @@
 # the steps having already been run. This is because this script will be
 # run a second time if the container were restarted for some reason.
 
-envsubst < exercise/petclinic-image-pipeline-resource.yaml.in > exercise/petclinic-image-pipeline-resource.yaml
+envsubst < exercise/image-pipeline-resource.yaml.in > exercise/image-pipeline-resource.yaml

@@ -1,4 +1,4 @@
-For this tutorial we're going to use a simple Java application. The workshop is configured to provide you a pre-created project. We can verify the name of the project with:
+For this tutorial we're going to use a simple nodejs application. The workshop is configured to provide you a pre-created project. We can verify the name of the project with:
 
 [source,bash,role=execute-1]
 ----
@@ -14,13 +14,13 @@ This workshop has created a `ServiceAccount` with the required permissions to ru
 oc get serviceaccount pipeline
 ----
 
-You will use the link:https://github.com/spring-projects/spring-petclinic[Spring PetClinic] sample application during this tutorial, which is a simple Spring Boot application.
+You will use the link:https://github.com/sclorg/nodejs-ex[nodejs-ex] sample application during this tutorial, which is a simple nodejs application.
 
-Create the Kubernetes objects for deploying the PetClinic app on OpenShift by running the command below. The deployment will not complete since there are no container images built for the PetClinic application yet. That you will do in the following sections through a CI/CD pipeline.
+Create the Kubernetes objects for deploying the nodejs-ex app on OpenShift by running the command below. The deployment will not complete since there are no container images built for the nodejs-ex application yet. That you will do in the following sections through a CI/CD pipeline.
 
 [source,bash,role=execute-1]
 ----
-oc create -f sampleapp/petclinic.yaml
+oc create -f sampleapp/sampleapp.yaml
 ----
 
 You should be able to see the deployment in the OpenShift Web Console.

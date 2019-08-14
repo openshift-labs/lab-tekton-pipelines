@@ -3,21 +3,21 @@ apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
   labels:
-    app: spring-petclinic
-  name: spring-petclinic
+    app: nodejs-ex
+  name: nodejs-ex
 ---
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
   labels:
-    app: spring-petclinic
-  name: spring-petclinic
+    app: nodejs-ex
+  name: nodejs-ex
 spec:
   replicas: 1
   revisionHistoryLimit: 10
   selector:
-    app: spring-petclinic
-    deploymentconfig: spring-petclinic
+    app: nodejs-ex
+    deploymentconfig: nodejs-ex
   strategy:
     activeDeadlineSeconds: 21600
     resources: {}
@@ -31,13 +31,13 @@ spec:
   template:
     metadata:
       labels:
-        app: spring-petclinic
-        deploymentconfig: spring-petclinic
+        app: nodejs-ex
+        deploymentconfig: nodejs-ex
     spec:
       containers:
-      - image: spring-petclinic:latest
+      - image: nodejs-ex:latest
         imagePullPolicy: Always
-        name: spring-petclinic
+        name: nodejs-ex
         ports:
         - containerPort: 8080
           protocol: TCP
@@ -57,18 +57,18 @@ spec:
   triggers:
   - imageChangeParams:
       containerNames:
-      - spring-petclinic
+      - nodejs-ex
       from:
         kind: ImageStreamTag
-        name: spring-petclinic:latest
+        name: nodejs-ex:latest
     type: ImageChange
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: spring-petclinic
-  name: spring-petclinic
+    app: nodejs-ex
+  name: nodejs-ex
 spec:
   ports:
   - name: 8080-tcp
@@ -84,8 +84,8 @@ spec:
     protocol: TCP
     targetPort: 8778
   selector:
-    app: spring-petclinic
-    deploymentconfig: spring-petclinic
+    app: nodejs-ex
+    deploymentconfig: nodejs-ex
   sessionAffinity: None
   type: ClusterIP
 ---
@@ -93,12 +93,12 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   labels:
-    app: spring-petclinic
-  name: spring-petclinic
+    app: nodejs-ex
+  name: nodejs-ex
 spec:
   port:
     targetPort: 8080-tcp
   to:
     kind: Service
-    name: spring-petclinic
+    name: nodejs-ex
     weight: 100
