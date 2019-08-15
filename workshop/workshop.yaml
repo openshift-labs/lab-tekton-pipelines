@@ -8,6 +8,10 @@ modules:
     - verify-workshop-environment
     - exercises/deploy-sample-app
     - exercises/install-tasks
+    - exercises/task-definitions
     - exercises/create-pipeline
+    - exercises/pipeline-resources
     - exercises/trigger-pipeline
+    - exercises/web-console
+    - exercises/verify-deployment
     - workshop-summary

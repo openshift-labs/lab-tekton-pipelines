@@ -11,10 +11,18 @@ modules:
         name: Deploy a Sample Application
     exercises/install-tasks:
         name: Install Tasks
+    exercises/task-definitions:
+        name: Task Resource Definitions
     exercises/create-pipeline:
         name: Create a Pipeline
+    exercises/pipeline-resources:
+        name: Create Pipeline Resources
     exercises/trigger-pipeline:
         name: Trigger a Pipeline
+    exercises/web-console:
+        name: Web Console Visualization
+    exercises/verify-deployment:
+        name: Verify Deployment
     workshop-summary:
         name: Workshop Summary
         exit_sign: Finish Workshop
