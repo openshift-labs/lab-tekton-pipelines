@@ -38,7 +38,7 @@ been working with. As a reminder, the project you are using is %project_namespac
 image:../images/web-console-project.png[Web Console Project]
 
 Next, click on the **Topology** tab on the left side of the web console if you don't
-see the what's in the image below. Once in the topology view, you can see the deployment
+see the what's in the image below. Once in the **Topology view**, you can see the deployment
 config for the nodejs-ex application, which is what is shown in the image below:
 
 image:../images/topology-view.png[Topology View]
