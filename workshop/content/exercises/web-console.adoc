@@ -1,0 +1,59 @@
+You can watch the execution of a `pipelinerun` through the OpenShift web console
+by clicking on the **Console** tab next to the **Terminal** tab at the center top
+of the workshop in your browser.
+
+Make sure you select the **Developer** option from the dropdown in the top left
+corner of the web console as shown below:
+
+image:../images/developer-view.png[Developer View]
+
+Next, select the Project dropdown menu and choose the project namespace you have
+been working with. As a reminder, the project you are using is called %project_namespace%.
+
+image:../images/web-console-project.png[Web Console Project]
+
+Once you have selected your project, click on the **Pipelines** tab on the left
+hand side of the web console. You will see the name of the `pipeline` and, under
+the **Last Run** column, the name of the current `pipelinerun`. Click on the `pipelinerun` name:
+
+image:../images/web-console-pr.png[Web Console PipelineRun]
+
+After clicking on the `pipelinerun` name, you should see the `tasks` as part of
+your `pipeline` executing similar to whats displayed below:
+
+image:../images/web-console-tasks.png[Web Console Tasks]
+
+By hovering your cursor over the build `task`, you can see the steps that the `task`
+will execute. You can also do this with the deploy `task`.
+
+Since this is not the official OpenShift 4.2 web console, you will not be able to
+view the logs through the web console, but this will be available in the official
+OpenShift 4.2 web console release.
+
+To verify the `pipelinerun` executed successfully, head back to the terminal by
+clicking on the **Terminal** tab next to the **Console** tab at the center top of
+the workshop in your browser.
+
+Once you see the successful deployment verification message shown below, you can
+go out and see the application running on OpenShift:
+
+[source,bash]
+----
+[deploy : oc] deploymentconfig.apps.openshift.io/nodejs-ex rolled out
+----
+
+If you do not see the message, just wait a minute as the `pipelinerun` finishes and
+watch the logs continue to come in from `tkn`.
+
+You can confirm the successful deployment after the logs show the output above by
+running the `tkn` command you ran earlier to list the `pipelineruns`:
+
+[source,bash,role=execute-2]
+----
+tkn pr ls
+----
+
+Under the STATUS column of the output, you should see Succeeded if the `pipelinerun`
+was successful. You can also see how long the `pipelinerun` took to execute under the DURATION column.
+
+To see the application you have deployed, click Continue to head to the next section.
