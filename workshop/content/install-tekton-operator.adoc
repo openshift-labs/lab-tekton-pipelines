@@ -14,7 +14,8 @@ to the **Catalog > OperatorHub** tab in the OpenShift web console. You can see t
 list of available operators for OpenShift provided by Red Hat as well as a community
 of partners and open-source projects.
 
-Next, you would click on the **Integration & Delivery** category to find the **OpenShift Pipeline Operator**.
+Next, you would click on the **Integration & Delivery** category to find the
+**OpenShift Pipeline Operator** as shown below:
 
 image:images/operatorhub.png[OpenShift OperatorHub]
 
