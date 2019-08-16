@@ -44,7 +44,16 @@ see the `pipelineresource` references you just created in the `pipelinerun` defi
 
 While learning about the resource definition behind a `pipelinerun` is important,
 you do not have to define this resource yourself to trigger a `pipelinerun`. You
-can create the above `pipelinerun` to deploy the nodejs-ex application out to OpenShift via `tkn`:
+can create the above `pipelinerun` to deploy the nodejs-ex application out to OpenShift via `tkn`.
+
+The `tkn` command below triggers a `pipelinerun`. The `-r` flag allows you specify
+what `pipelineresources` will be included in a `pipelinerun`. You can see the git and image
+`pipelineresources` you created earlier.
+
+You will also notice the `-s` flag for specifying a service account. This is how you
+can add your pipeline service account to the `pipelinerun`.
+
+Run the command below to kick off the `pipelinerun`:
 
 [source,bash,role=execute-1]
 ----
@@ -65,9 +74,6 @@ To view the `pipelinerun` created, run the following `tkn` command:
 ----
 tkn pr ls
 ----
-
-You can view the logs of `pipelinerun` as it executes using `tkn` and also
-visualize the `pipelinerun` through the OpenShift web console.
 
 Tekton CLI Logs
 ---------------
