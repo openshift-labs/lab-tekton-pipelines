@@ -7,6 +7,8 @@ modules:
         name: Install OpenShift Pipelines Operator
     verify-workshop-environment:
         name: Verify Workshop Environment
+    exercises/serviceaccount:
+        name: Pipeline Service Account
     exercises/deploy-sample-app:
         name: Deploy a Sample Application
     exercises/install-tasks:

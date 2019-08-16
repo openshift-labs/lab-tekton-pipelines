@@ -6,6 +6,7 @@ modules:
     - concepts
     - install-tekton-operator
     - verify-workshop-environment
+    - exercises/serviceaccount
     - exercises/deploy-sample-app
     - exercises/install-tasks
     - exercises/task-definitions

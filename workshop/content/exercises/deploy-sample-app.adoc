@@ -1,22 +1,21 @@
-For this tutorial, you're going to use a simple nodejs application. The workshop is configured to provide you a pre-created project. We can verify the name of the project with:
+For this tutorial, you're going to use a simple nodejs application. The workshop
+is configured to provide you a pre-created OpenShift project (i.e., Kubernetes namespace)
+where you will set up supplementary resources for your application for its eventual
+deployment.
+
+We can verify the name of the project with:
 
 [source,bash,role=execute-1]
 ----
 oc project -q
 ----
 
-Building container images using build tools such as `S2I`, `Buildah`, `Kaniko`, etc require privileged access to the cluster. OpenShift default security settings do not allow access to privileged containers unless specifically configured.
-
-This workshop has created a `ServiceAccount` with the required permissions to run privileged pods for building images. The name of this service account is easy to remember. It is named `pipeline`. You can verify that `pipeline` has been created by running the following command:
-
-[source,bash,role=execute-1]
-----
-oc get serviceaccount pipeline
-----
-
 You will use the link:https://github.com/sclorg/nodejs-ex[nodejs-ex] sample application during this tutorial, which is a simple nodejs application.
 
-Create the Kubernetes objects for deploying the nodejs-ex app on OpenShift by running the command below. The deployment will not complete since there are no container images built for the nodejs-ex application yet. That you will do in the following sections through a CI/CD pipeline.
+Create the Kubernetes objects for deploying the nodejs-ex app on OpenShift by running
+the command below. The deployment will not complete since there are no container images
+built for the nodejs-ex application yet. That you will do in the following sections
+through a CI/CD pipeline.
 
 [source,bash,role=execute-1]
 ----
