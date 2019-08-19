@@ -1,11 +1,14 @@
-OpenShift Pipelines is provided as an add-on on top of OpenShift that can be installed via an operator that is available in the OpenShift OperatorHub.
+OpenShift Pipelines is provided as an OpenShift add-on that can be installed via an
+operator that is available in the OpenShift OperatorHub.
 
-The OpenShift Pipelines operator installs globally on the cluster and will then monitor and manage `pipelines` for every single user in the cluster.
+Operators may be installed into a single namespace and only monitor resources in that
+namespace, but the OpenShift Pipelines Operator installs globally on the cluster and monitors
+and manage pipelines for every single user in the cluster.
 
-To install the operator, you need to be a cluster administrator user. In this workshop environment, the operator has already been installed for you.
-Nevertheless, this is the process we followed in order to install the operator.
-These instructions are for reference, as you will not be able to see these screens
-in the embedded console in the workshop due to your user's lack of the required privileges.
+To install the operator globally, you need to be a cluster administrator user. In this workshop environment,
+the operator has already been installed for you. Nevertheless, this is the process we followed
+in order to install the operator. These instructions are for reference, as you will not be able
+to see these screens in the embedded console in the workshop due to your user's lack of the required privileges.
 
 == Install process
 

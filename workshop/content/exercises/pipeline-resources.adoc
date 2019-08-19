@@ -1,15 +1,15 @@
-Before we can trigger the `pipeline` just created, `pipelineresources` must be
-defined as inputs and outputs for the build `task` of the `pipeline`.
+Before we can trigger the pipeline just created, pipelineresources must be
+defined as inputs and outputs for the `build` task of the pipeline.
 
-The build `task` of your `pipeline` takes a git repository as an input and then
-produces an image that is pushed to an image registry. `PipelineResources` are how
+The `build` task of your pipeline takes a git repository as an input and then
+produces an image that is pushed to an image registry. Pipelineresources are how
 you can specify the specific urls of the git repository and the image registry.
 
-Much like `tasks`, these `pipelineresources` are reusable. The git repository `pipelineresource`
-could be used as an input to a different `task` on a different `pipeline`, and the
-image registry output could be used for a different image as the result of a `taskrun`.
+Much like tasks, these pipelineresources are reusable. The git repository pipelineresource
+could be used as an input to a different task on a different pipeline, and the
+image registry output could be used for a different image as the result of a taskrun.
 
-The following `pipelineresource` defines the git repository and reference for the nodejs-ex application:
+The following pipelineresource defines the git repository and reference for the nodejs-ex application:
 
 [source,yaml]
 ----
@@ -24,9 +24,9 @@ spec:
     value: https://github.com/sclorg/nodejs-ex
 ----
 
-You can see above that the resource has a name (i.e., `nodejs-ex-git`) and under
-the spec property we define that this `pipelineresource` has a type of git, meaning
-it is a git repository. The last property is params, which can be used to specify
+You can see above that the resource has a name (i.e. `nodejs-ex-git`) and under
+the `spec` property we define that this pipelineresource has a type of `git`, meaning
+it is a git repository. The last property is `params`, which can be used to specify
 the url associated with the git input.
 
 The following defines the OpenShift internal registry for the resulting nodejs-ex
@@ -45,37 +45,37 @@ spec:
     value: %image_registry%/%project_namespace%/nodejs-ex
 ----
 
-The format follows the same structure as the git `pipelineresource`. The main difference
-is that a type of image is specified under the spec property, meaning this is an
+The format follows the same structure as the git pipelineresource. The main difference
+is that a type of `image` is specified under the `spec` property, meaning this is an
 image registry that will have an image pushed to it. The url for the registry is
-specified under the params property just like with the git `pipelineresource`.
+specified under the `params` property just like with the git pipelineresource.
 
-Create the above `pipelineresources` via the `oc` commands below.
+Create the above pipelineresources via the `oc` commands below.
 
-Add the git repository input for the `pipeline`:
+Add the git repository input for the pipeline:
 
 [source,bash,role=execute-1]
 ----
 oc create -f exercise/git-pipeline-resource.yaml
 ----
 
-Add the registry for the image to be pushed to as an output of the build `task`
-of the `pipeline`:
+Add the registry for the image to be pushed to as an output of the `build` task
+of the pipeline:
 
 [source,bash,role=execute-1]
 ----
 oc create -f exercise/image-pipeline-resource.yaml
 ----
 
-You can see the `pipelineresources` created using `tkn`:
+You can see the pipelineresources created using `tkn`:
 
 [source,bash,role=execute-1]
 ----
 tkn resource ls
 ----
 
-Now that `pipelineresources` have been specified, you can include these as part
-of a `pipelinerun` that will deploy the nodejs-ex application out to OpenShift.
+Now that pipelineresources have been specified, you can include these as part
+of a pipelinerun that will deploy the nodejs-ex application out to OpenShift.
 Clear your terminal before continuing:
 
 [source,bash,role=execute-1]

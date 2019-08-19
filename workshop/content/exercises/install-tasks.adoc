@@ -1,6 +1,6 @@
-`Tasks` consist of a number of steps that are executed sequentially. Each step is
-executed in a separate container within the same `task` pod. `Tasks` can have inputs
-and outputs in order to interact with other `tasks` as part of the `pipeline`.
+Tasks consist of a number of steps that are executed sequentially. Each step is
+executed in a separate container within the same task pod. Tasks can have inputs
+and outputs in order to interact with other tasks as part of a pipeline.
 
 Here is an example of a Maven task for building a Maven-based Java application:
 
@@ -25,29 +25,28 @@ spec:
     - install
 ----
 
-When a `task` starts running, it starts a pod and runs each step sequentially in
-a separate container on the same pod. The `task` above happens to have a single step,
-but `tasks` can have multiple steps, and, since these steps run within the same pod,
+When a task starts running, it starts a pod and runs each step sequentially in
+a separate container in the same pod. The task above happens to have a single step,
+but tasks can have multiple steps. Since these steps run within the same pod,
 they have access to the same volumes in order to cache files, access configmaps,
-secrets, etc. `Tasks` can also receive inputs (e.g., a git repository) and produce
+secrets, etc. Tasks can also receive inputs (e.g. a git repository) and produce
 outputs (e.g., an image in a registry) in order to interact with each other.
 
-For each step as part of a `task`, an image is declared that will be used to host
+For each step as part of a task, an image is declared that will be used to host
 the step as it executes. In the example above, the image specified is `maven:3.6.0-jdk-8-slim`.
-The `maven:3.6.0-jdk-8-slim` image allows the step to execute a `mvn install` command
-to add an artifact to a local repository.
+The `maven:3.6.0-jdk-8-slim` image allows the step to run in a container a that provides
+necessary libraries to run a `mvn install` command to add an artifact to a local repository.
 
-As mentioned previously, only the requirement for a git repository is declared on
-the `task` above and not a specific git repository to be used. This allows `tasks`
-to be reusable for multiple `pipelines` and purposes. You can find more examples of
-reusable `tasks` in the link:https://github.com/tektoncd/catalog[Tekton Catalog]
+Only the requirement for a git repository is declared on the task under the `inputs:` property
+above and not a specific git repository to be used. This allows tasks to be reusable for multiple
+pipelines and purposes. You can find more examples of reusable tasks in the link:https://github.com/tektoncd/catalog[Tekton Catalog]
 and link:https://github.com/openshift/pipelines-catalog[OpenShift Catalog] repositories.
 
-Now that you understand the concept of a `task`, you should install the `s2i-nodejs`
+Now that you understand the concept of a task, you should install the `s2i-nodejs`
 and `openshift-client` tasks from the catalog repositories using `oc`. These will
-be the `tasks` you add to your `pipeline` for this tutorial.
+be the tasks you add to your pipeline for this tutorial.
 
-Create the `s2i-nodejs` `task` that will define and build a container image for a
+Create the `s2i-nodejs` task that will define and build a container image for a
 nodejs-ex application and push the resulting image to an image registry:
 
 [source,bash,role=execute-1]
@@ -55,7 +54,7 @@ nodejs-ex application and push the resulting image to an image registry:
 oc create -f tektontasks/s2i-nodejs-task.yaml
 ----
 
-Create the `openshift-client` `task` that will deploy the image created by `s2i-nodejs`
+Create the `openshift-client` task that will deploy the image created by `s2i-nodejs`
 as a container on OpenShift:
 
 [source,bash,role=execute-1]
@@ -63,10 +62,10 @@ as a container on OpenShift:
 oc create -f tektontasks/openshift-client-task.yaml
 ----
 
-**NOTE**: For convenience, the `tasks` have been copied from their original locations
+**NOTE**: For convenience, the tasks have been copied from their original locations
 in the Tekton and OpenShift catalog git repositories to the workshop.
 
-You can take a look at the list of installed `tasks` using the link:https://github.com/tektoncd/cli[Tekton CLI] (`tkn`):
+You can take a look at the list of installed tasks using the link:https://github.com/tektoncd/cli[Tekton CLI] (`tkn`):
 
 [source,bash,role=execute-1]
 ----
@@ -82,8 +81,8 @@ openshift-client   58 seconds ago
 s2i-nodejs         1 minute ago
 ----
 
-In the next section, you will examine the `task` definitions you just created to
-gain a better understanding of the `pipeline` you will create. Clear your terminal
+In the next section, you will examine the task definitions you just created to
+gain a better understanding of the pipeline you will create. Clear your terminal
 before continuing:
 
 [source,bash,role=execute-1]

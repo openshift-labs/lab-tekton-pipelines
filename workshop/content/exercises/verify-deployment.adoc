@@ -1,7 +1,7 @@
 To verify nodejs-ex's successful deployment, head back out to the web console by
 clicking on the **Console** at the center top of the workshop in your browser.
 
-The first thing you should notice is the successful `task` completions under the
+The first thing you should notice is the successful task completions under the
 **Pipelines** tab, which should look similar to what's shown below:
 
 image:../images/web-console-tasks-success.png[Web Console Tasks Success]
@@ -12,7 +12,7 @@ image:../images/topology-view-deployed.png[Topology View Deployed]
 
 The **Topology** view of the OpenShift web console helps to visually show what is
 deployed out to your OpenShift project. The circle with the OpenShift logo at
-the center is meant to represent the nodejs-ex application you deployed via the `pipelinerun`.
+the center is meant to represent the nodejs-ex application you deployed via the pipelinerun.
 
 The dark blue lining around the circle means that a container is started up and
 running the nodejs-ex application. By clicking on the arrow icon as shown below,
