@@ -59,7 +59,7 @@ and its image in the registry. That's because pipelines in Tekton are designed t
 be generic and reusable across environments and stages through the application's lifecycle.
 
 Pipelines abstract away the specifics of the git source repository and image to be
-produced as pipelineresources. When triggering a pipeline, you can provide different
+produced as pipeline resources. When triggering a pipeline, you can provide different
 git repositories and image registries to be used during a pipeline execution. You
 will do that in the next section.
 
@@ -93,7 +93,7 @@ You can see the pipeline you have created using `tkn`:
 tkn pipeline ls
 ----
 
-In the next section, you will focus on creating Tekton pipelineresources.
+In the next section, you will focus on creating Tekton pipeline resources.
 Clear your terminal before continuing:
 
 [source,bash,role=execute-1]

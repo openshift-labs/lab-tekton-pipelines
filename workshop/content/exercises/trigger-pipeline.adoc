@@ -1,4 +1,4 @@
-Now that you have created tasks, a pipeline, and pipelineresources,
+Now that you have created tasks, a pipeline, and pipeline resources,
 you are ready to trigger a pipeline that will deploy the nodejs-ex application
 out to OpenShift.
 
@@ -40,15 +40,15 @@ via a code commit to a git repository instead of triggering manually.
 
 The last property of the pipelinerun of note is `resources`. This is how the specific
 git repository and image registry urls can be entered for the pipelinerun. You'll
-see the pipelineresource references you just created in the pipelinerun definition.
+see the pipeline resource references you just created in the pipelinerun definition.
 
 While learning about the resource definition behind a pipelinerun is important,
 you do not have to define this resource yourself to trigger a pipelinerun. You
 can create the above pipelinerun to deploy the nodejs-ex application out to OpenShift via `tkn`.
 
 The `tkn` command below triggers a pipelinerun. The `-r` flag allows you specify
-what pipelineresources will be included in a pipelinerun. You can see the git and image
-pipelineresources you created earlier.
+what pipeline resources will be included in a pipelinerun. You can see the git and image
+pipeline resources you created earlier.
 
 You will also notice the `-s` flag for specifying a service account. This is how you
 can add your `pipeline` service account to the pipelinerun.

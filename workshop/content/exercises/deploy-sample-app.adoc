@@ -26,16 +26,18 @@ oc create -f sampleapp/sampleapp.yaml
 ----
 
 To verify the resources needed to support nodejs-ex have been created, you can head
-out to the OpenShift web console. A warning that there will be an error message first
-displayed on the screen when you visit the console due to the fact that your user doesn't
-have permissions to view other projects on the cluster. This will be solved by switching
-over to the project that has been created for you for this workshop.
+out to the OpenShift web console.
+
+**NOTE:** An error message may appear when you first visit the console due to the fact that your
+user for this workshop does not have permissions to view projects other than your own. The web console
+may start on a different project other than the one you are using for this workshop, but all you will need
+to do is follow the instructions below to navigate to your project.
 
 You can make your way to the web console by clicking on the **Console** tab next to the
 **Terminal** tab at the center top of the workshop in your browser.
 
-Make sure you select the **Developer** option from the dropdown in the top left
-corner of the web console as shown below:
+Make sure the **Developer** option from the dropdown in the top left corner of the web console
+is selected as shown below:
 
 image:../images/developer-view.png[Developer View]
 

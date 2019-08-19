@@ -23,6 +23,6 @@ In this tutorial, you will do the following:
 * Learn about Tekton concepts
 * Install tasks
 * Create a pipeline
-* Add pipelineresources
+* Add pipeline resources
 * Trigger a pipelinerun
 * Deploy a sample application on OpenShift from a pipelinerun
