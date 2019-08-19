@@ -1,4 +1,4 @@
-For this tutorial, you're going to use a simple nodejs application. The workshop
+For this tutorial, you're going to use a simple Node.js application. The workshop
 is configured to provide you a pre-created OpenShift project (i.e., Kubernetes namespace)
 where you will set up supplementary resources for your application for its eventual
 deployment.
@@ -10,12 +10,15 @@ We can verify the name of the project with:
 oc project -q
 ----
 
-You will use the link:https://github.com/sclorg/nodejs-ex[nodejs-ex] sample application during this tutorial, which is a simple nodejs application.
+You will use the link:https://github.com/sclorg/nodejs-ex[nodejs-ex] sample application during this tutorial,
+which is a simple Node.js application.
 
-Create the Kubernetes objects for deploying the nodejs-ex app on OpenShift by running
-the command below. The deployment will not complete since there are no container images
-built for the nodejs-ex application yet. That you will do in the following sections
-through a CI/CD pipeline.
+To prepare for nodejs-ex's eventual deployment, you will create Kubernetes objects that
+are supplementary to the application, such as a route (i.e. url). The deployment will not
+complete since there are no container images built for the nodejs-ex application yet.
+That you will do in the following sections through a CI/CD pipeline.
+
+Create the supplementary Kubernetes objects by running the command below:
 
 [source,bash,role=execute-1]
 ----
@@ -23,33 +26,40 @@ oc create -f sampleapp/sampleapp.yaml
 ----
 
 To verify the resources needed to support nodejs-ex have been created, you can head
-out to the OpenShift web console by clicking on the **Console** tab next to the
+out to the OpenShift web console.
+
+**NOTE:** An error message may appear when you first visit the console due to the fact that your
+user for this workshop does not have permissions to view projects other than your own. The web console
+may start on a different project other than the one you are using for this workshop, but all you will need
+to do is follow the instructions below to navigate to your project.
+
+You can make your way to the web console by clicking on the **Console** tab next to the
 **Terminal** tab at the center top of the workshop in your browser.
 
-Make sure you select the **Developer** option from the dropdown in the top left
-corner of the web console as shown below:
+Make sure the **Developer** option from the dropdown in the top left corner of the web console
+is selected as shown below:
 
 image:../images/developer-view.png[Developer View]
 
 Next, select the Project dropdown menu shown below and choose the project namespace you have
-been working with. As a reminder, the project you are using is %project_namespace%.
+been working with. As a reminder, the project you are using is **%project_namespace%** and this
+will differ from what is shown in the photo below:
 
 image:../images/web-console-project.png[Web Console Project]
 
 Next, click on the **Topology** tab on the left side of the web console if you don't
-see the what's in the image below. Once in the **Topology view**, you can see the deployment
+see the what's in the image below. Once in the **Topology** view, you can see the deployment
 config for the nodejs-ex application, which is what is shown in the image below:
 
 image:../images/topology-view.png[Topology View]
 
 You'll notice the white circle around the nodejs-ex deployment config. This means
-that nothing is actually running yet in your OpenShift project. The resources created
-are supplementary to the application, such as a route (i.e., url).
+that nothing is actually running yet in your OpenShift project.
 
 Head back over to the terminal by clicking on the **Terminal** tab next to the **Console**
 tab that you used to get the web console.
 
-In the next section, you'll learn how to use Tekton `tasks`. Clear your terminal before continuing:
+In the next section, you'll learn how to use Tekton tasks. Clear your terminal before continuing:
 
 [source,bash,role=execute-1]
 ----
