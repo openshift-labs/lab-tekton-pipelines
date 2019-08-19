@@ -5,8 +5,8 @@ The custom resources needed to define a pipeline are listed below:
 * `Task`: a reusable, loosely coupled number of steps that perform a specific task (e.g. building a container image)
 * `Pipeline`: the definition of the pipeline and the tasks that it should perform
 * `PipelineResource`: inputs (e.g. git repository) and outputs (e.g. image registry) to and out of a pipeline or task
-* `TaskRun`: the execution and result (i.e., success or failure) of running an instance of task
-* `PipelineRun`: the execution and result (i.e., success or failure) of running a pipeline
+* `TaskRun`: the execution and result (i.e. success or failure) of running an instance of task
+* `PipelineRun`: the execution and result (i.e. success or failure) of running a pipeline
 
 image:images/tekton-architecture.svg[Tekton Architecture]
 
