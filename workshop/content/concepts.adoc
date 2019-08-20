@@ -1,4 +1,7 @@
-Tekton defines a number of link:https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/[Kubernetes custom resources] as building blocks in order to standardize pipeline concepts and provide a terminology that is consistent across CI/CD solutions. These custom resources are an extension of the Kubernetes API that let users create and interact with these objects using the OpenShift CLI (`oc`), `kubectl`, and other Kubernetes tools.
+Tekton defines a number of link:https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/[Kubernetes custom resources]
+as building blocks in order to standardize pipeline concepts and provide a terminology
+that is consistent across CI/CD solutions. These custom resources are an extension of the
+Kubernetes API that let users create and interact with these objects using the OpenShift CLI (`oc`), `kubectl`, and other Kubernetes tools.
 
 The custom resources needed to define a pipeline are listed below:
 
@@ -16,6 +19,7 @@ In short, in order to create a pipeline, one does the following:
 * Create a pipeline and pipeline resources to define your application's delivery pipeline
 * Create a pipelinerun to instantiate and invoke the pipeline
 
-For further details on pipeline concepts, refer to the link:https://github.com/tektoncd/pipeline/tree/master/docs#learn-more[Tekton documentation] that provides an excellent guide for understanding various parameters and attributes available for defining `pipelines`.
+For further details on pipeline concepts, refer to the link:https://github.com/tektoncd/pipeline/tree/master/docs#learn-more[Tekton documentation]
+that provides an excellent guide for understanding various parameters and attributes available for defining pipelines.
 
 In the following sections, you will go through each of the above steps to define and execute a pipeline.

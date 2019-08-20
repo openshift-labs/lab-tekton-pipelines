@@ -54,6 +54,10 @@ Each pipeline has a `tasks` property. Under this property, each `task` has a `na
 For this pipeline, it has two tasks named `build` and `deploy`. The `taskRef` property under each
 task `name` is where the tasks you just created can be specified as part of the pipeline.
 
+A visual that shows how `s2i-nodejs` is part of the pipeline above can be seen below:
+
+image:../images/task-visual.png[s2i-nodejs Visualization]
+
 You might have noticed that there are no references to the nodejs-ex git repository
 and its image in the registry. That's because pipelines in Tekton are designed to
 be generic and reusable across environments and stages through the application's lifecycle.
@@ -73,6 +77,11 @@ The execution order of tasks is determined based on the dependencies that are
 defined between the tasks via `inputs` and `outputs` as well as explicit orders
 that are defined via `runAfter`. You'll notice the `deploy` task above has a `runAfter`
 property specifying to only execute after the `build` task is complete.
+
+A visualization of the pipeline above is shown below to help illustrate what has been
+described so far in this section:
+
+image:../images/pipeline-visual.png[Pipeline Visualization]
 
 Create the Pipeline
 -------------------
