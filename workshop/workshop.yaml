@@ -2,6 +2,7 @@ name: OpenShift Pipelines with Tekton
 
 modules:
     activate:
+    - workshop-introduction
     - workshop-overview
     - concepts
     - install-tekton-operator

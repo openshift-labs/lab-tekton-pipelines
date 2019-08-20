@@ -1,4 +1,6 @@
 modules:
+    workshop-introduction:
+        name: Workshop Introduction
     workshop-overview:
         name: Workshop Overview
     concepts:

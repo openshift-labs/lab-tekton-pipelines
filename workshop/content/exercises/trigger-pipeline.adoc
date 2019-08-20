@@ -33,11 +33,6 @@ spec:
 Under the `spec` property, you'll see the `pipelineRef` property where the pipeline
 to be used is specified. You should see the name of the pipeline you created (i.e. `deploy-pipeline`).
 
-Since this pipelinerun will be triggered manually by you using `tkn`, the `trigger`
-property is set to `manual`. The `trigger` property is used to specify when the pipeline
-should execute. This property is how a webhook can be used to trigger a pipelinerun
-via a code commit to a git repository instead of triggering manually.
-
 The last property of the pipelinerun of note is `resources`. This is how the specific
 git repository and image registry urls can be entered for the pipelinerun. You'll
 see the pipeline resource references you just created in the pipelinerun definition.
