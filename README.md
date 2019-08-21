@@ -1,9 +1,7 @@
 Lab - OpenShift Pipelines with Tekton
 ====================
 
-Please be aware that this workshop is being developed at this time. However, all feedback and contributions to the project are welcome.
-
-This workshop provides an introduction to OpenShift Pipelines with Tekton.
+This workshop provides an introduction to OpenShift Pipelines with Tekton. Please check [releases](https://github.com/openshift-labs/lab-tekton-pipelines/releases) for the latest version of the workshop.
 
 The workshop uses the HomeRoom workshop environment in the learning portal configuration. You will need to be a cluster admin in order to deploy it.
 
