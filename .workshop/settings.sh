@@ -1,5 +1,5 @@
 WORKSHOP_NAME=lab-tekton-pipelines
-WORKSHOP_IMAGE=quay.io/openshiftlabs/lab-tekton-pipelines:master
+WORKSHOP_IMAGE=quay.io/openshiftlabs/lab-tekton-pipelines:1.0
 CONSOLE_IMAGE=quay.io/openshift/origin-console:4.2
 RESOURCE_BUDGET=custom
 MAX_SESSION_AGE=7200
