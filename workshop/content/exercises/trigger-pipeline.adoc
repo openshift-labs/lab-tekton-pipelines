@@ -74,21 +74,21 @@ Tekton CLI Logs
 ---------------
 
 To view the logs for the pipelinerun, you need the unique name assigned to it
-when you ran `tkn pipeline start`. This is the same name as `tkn pr ls` outputs
-and actually corresponds to the name of the pod for the pipelinerun.
+when you ran `tkn pipeline start`. This is the same name as `tkn pr ls` outputs.
 
 To grab the name of this into an environment variable, run:
 
 [source,bash,role=execute-1]
 ----
-POD=`tkn pr ls -o jsonpath='{$.items[?(@.status.conditions[0].reason=="Running")].metadata.name}' | tr ' ' '\n' | head -1`; echo $POD
+RUN=`tkn pr ls -o jsonpath='{$.items[?(@.status.conditions[0].reason=="Running")].metadata.name}' | tr ' ' '\n' | head -1`; echo $RUN
 ----
 
-Then run:
+Then run the following `tkn` command to access the logs of the pipelinerun using the environment
+variable to specify the name of the pipelinerun:
 
 [source,bash,role=execute-1]
 ----
-tkn pr logs $POD -f
+tkn pr logs $RUN -f
 ----
 
 The logs output tells you what tasks are running as well as what step it is running.
