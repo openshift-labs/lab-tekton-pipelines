@@ -14,6 +14,6 @@ Kubernetes
 Kubernetes is an open-source system for automating deployment, scaling, and management
 of containerized applications.
 
-As OpenShift is a platform based on Kubernetes, there will be Kubernetes concepts
+As OpenShift is a distribution of Kubernetes, there will be Kubernetes concepts
 used throughout this workshop. The workshop assumes that attendees will have knowledge
 of Kubernetes fundamental concepts.

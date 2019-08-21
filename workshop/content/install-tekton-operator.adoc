@@ -22,10 +22,6 @@ Next, you would click on the **Integration & Delivery** category to find the
 
 image:images/operatorhub.png[OpenShift OperatorHub]
 
-Having trouble viewing the photo above? Simply drag the divider that separates the workshop content 
-you are reading now from the terminal towards the right. This will expand photos to make
-them easier to see.
-
 Click on **OpenShift Pipelines Operator**, **Continue**, and then **Install** as
 shown below:
 
