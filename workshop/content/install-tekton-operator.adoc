@@ -7,8 +7,8 @@ and manage pipelines for every single user in the cluster.
 
 To install the operator globally, you need to be a cluster administrator user. In this workshop environment,
 the operator has already been installed for you. Nevertheless, this is the process we followed
-in order to install the operator. These instructions are for reference, as you will not be able
-to see these screens in the embedded console in the workshop due to your user's lack of the required privileges.
+in order to install the operator. **These instructions are for reference, as you will not be able
+to see these screens in the embedded console in the workshop due to your user's lack of the required privileges.**
 
 == Install process
 
