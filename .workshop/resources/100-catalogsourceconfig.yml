@@ -1,0 +1,12 @@
+apiVersion: operators.coreos.com/v1
+kind: CatalogSourceConfig
+metadata:
+  finalizers:
+    - finalizer.catalogsourceconfigs.operators.coreos.com
+  name: homeroom-operators
+  namespace: openshift-marketplace
+spec:
+  csDisplayName: Homeroom Operators
+  csPublisher: Used by Homeroom
+  packages: 'openshift-pipelines-operator'
+  targetNamespace: openshift-operators
