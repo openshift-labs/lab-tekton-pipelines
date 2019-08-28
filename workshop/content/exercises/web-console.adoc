@@ -63,7 +63,7 @@ running the `tkn` command you ran earlier to list the pipelineruns:
 tkn pr ls
 ----
 
-Under the STATUS column of the output, you should see Succeeded if the pipelinerun
-was successful. You can also see how long the pipelinerun took to execute under the DURATION column.
+Under the `STATUS` column of the output, you should see `Succeeded` if the pipelinerun
+was successful. You can also see how long the pipelinerun took to execute under the `DURATION` column.
 
 To see the application you have deployed, click Continue to head to the next section.
