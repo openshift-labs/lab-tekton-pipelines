@@ -25,8 +25,7 @@ image:../images/web-console-options.png[Web Console Options]
 
 By clicking on the three dots to the right of the **Last Run Time**, you will see
 how you can trigger a pipelinerun from the web console using the Start Last Run option
-to re-execute the most recent pipelinerun of a pipeline or use the Start option
-to kick off the `pipeline` in its current state. There is also a Delete option to remove
+to re-execute the most recent pipelinerun of a pipeline. There is also a Delete option to remove
 pipelines from your project namespace.
 
 Now that you have seen some options of using OpenShift Pipelines through the web
@@ -40,10 +39,6 @@ image:../images/web-console-tasks.png[Web Console Tasks]
 
 By hovering your cursor over the `build` task, you can see the steps that the task
 will execute. You can also do this with the `deploy` task.
-
-Since this is not the official OpenShift 4.2 web console, you will not be able to
-view the logs through the web console, but this will be available in the official
-OpenShift 4.2 web console release.
 
 To verify the pipelinerun executed successfully, head back to the terminal by
 clicking on the **Terminal** tab next to the **Console** tab at the center top of
@@ -68,7 +63,7 @@ running the `tkn` command you ran earlier to list the pipelineruns:
 tkn pr ls
 ----
 
-Under the STATUS column of the output, you should see Succeeded if the pipelinerun
-was successful. You can also see how long the pipelinerun took to execute under the DURATION column.
+Under the `STATUS` column of the output, you should see `Succeeded` if the pipelinerun
+was successful. You can also see how long the pipelinerun took to execute under the `DURATION` column.
 
 To see the application you have deployed, click Continue to head to the next section.
