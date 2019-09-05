@@ -1,36 +1,14 @@
-You can watch the execution of a pipelinerun through the OpenShift web console
-by clicking on the **Console** tab next to the **Terminal** tab at the center top
-of the workshop in your browser.
+Now that you have kicked off your pipeline execution, you can view it in the **Pipelines**
+tab of the OpenShift web console. Click on the **Console** tab at the center top of the
+workshop in your browser to head back out to the web console.
 
-Make sure you select the **Developer** option from the dropdown in the top left
-corner of the web console as shown below:
-
-image:../images/developer-view.png[Developer View]
-
-Next, select the Project dropdown menu and choose the project namespace you have
-been working with. As a reminder, the project you are using is called **%project_namespace%**.
-
-image:../images/web-console-project.png[Web Console Project]
-
-Once you have selected your project, click on the **Pipelines** tab on the left
-hand side of the web console. You will see the name of the pipeline and, under
-the **Last Run** column, the name of the current pipelinerun.
+Once back in the web console, you should be on the **Pipelines** tab that will show
+you the current pipelinerun for deploy-pipeline, which will be similar to what is shown
+below:
 
 image:../images/web-console-pr.png[Web Console PipelineRun]
 
-You should also see the **Last Run Time** column as the last column on the **Pipelines**
-tab:
-
-image:../images/web-console-options.png[Web Console Options]
-
-By clicking on the three dots to the right of the **Last Run Time**, you will see
-how you can trigger a pipelinerun from the web console using the Start Last Run option
-to re-execute the most recent pipelinerun of a pipeline. There is also a Delete option to remove
-pipelines from your project namespace.
-
-Now that you have seen some options of using OpenShift Pipelines through the web
-console, you can proceed with viewing the current pipelinerun. To view it, click
-on the pipelinerun name under the **Last Run** column.
+To view the current pipelinerun, click on the pipelinerun name under the **Last Run** column.
 
 After clicking on the pipelinerun name, you should see the tasks as part of
 your pipeline executing similar to whats displayed below:
