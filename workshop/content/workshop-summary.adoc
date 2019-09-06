@@ -1,18 +1,21 @@
 In this workshop, you have worked with OpenShift Pipelines and learned about underlying
 Tekton concepts. OpenShift Pipelines provides CI/CD solutions for addressing the
-fundamentals of CI/CD (i.e., automating building, testing, and deploying application components),
+fundamentals of CI/CD (i.e., automation of building, testing, and deploying application components)
 but also offers modern solutions around addressing scale, server maintenance, and
 making all parts of the CI/CD process highly reusable for any number of application
 development tasks.
 
 We hope you have found this workshop helpful in learning about OpenShift Pipelines
 and would love any feedback you have on ways to make it better! Feel free to open
-issues in this workshop's link:https://github.com/openshift-labs/lab-openshift-pipelines-with-tekton[GitHub repository]
+issues in this workshop's link:https://github.com/openshift-labs/lab-tekton-pipelines[GitHub repository],
 but also reach out to your workshop leaders to share any thoughts on how we can
 make this a better experience.
 
 To learn more about OpenShift Pipelines and Tekton, the resources below can provide
 information on everything from getting started to more advanced concepts.
+
+OpenShift Pipelines Webpage:
+https://www.openshift.com/learn/topics/pipelines
 
 OpenShift Pipelines Documentation:
 https://openshift.github.io/pipelines-docs/docs/index.html
@@ -23,8 +26,8 @@ https://github.com/tektoncd/pipeline
 Tekton CLI GitHub:
 https://github.com/tektoncd/cli
 
-While the Tekton website is under construction at this time, please lookout in the
-future for information about Tekton to be available below:
+While the Tekton website is under construction at this time, please look out in the
+future for information about Tekton to be available at the following link:
 https://tekton.dev/
 
 Read more in the OpenShift blog announcement for OpenShift Pipelines:
@@ -38,6 +41,6 @@ For examples of Tekton `pipelines` and `tasks`, visit the `tektoncd/catalog` Git
 repository:
 https://github.com/tektoncd/catalog
 
-To rerun parts of this tutorial on your own, check out the `openshift/pipelines-tutorial`
+To rerun an OpenShift Pipelines tutorial on your own, check out the `openshift/pipelines-tutorial`
 GitHub repository:
 https://github.com/openshift/pipelines-tutorial
