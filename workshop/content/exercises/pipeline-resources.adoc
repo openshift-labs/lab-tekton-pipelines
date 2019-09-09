@@ -75,7 +75,7 @@ tkn resource ls
 ----
 
 Now that pipeline resources have been specified, you can include these as part
-of a pipelinerun that will deploy the nodejs-ex application out to OpenShift.
+of a pipeline run that will deploy the nodejs-ex application out to OpenShift.
 Clear your terminal before continuing:
 
 [source,bash,role=execute-1]

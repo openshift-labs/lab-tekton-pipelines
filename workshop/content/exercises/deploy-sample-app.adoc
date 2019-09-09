@@ -98,9 +98,6 @@ The mongodb-36-centos7 deployment config has a dark blue circle around it, meani
 a pod is running with the MongoDB container on it. The MongoDB should be all set
 to support the nodejs-ex application at this point.
 
-Head back over to the terminal by clicking on the **Terminal** tab next to the **Console**
-tab that you used to get the web console.
-
 In the next section, you'll learn how to use Tekton tasks. Clear your terminal before continuing:
 
 [source,bash,role=execute-1]

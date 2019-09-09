@@ -112,15 +112,15 @@ the image below:
 
 image:../images/deploy-pipeline-console.png[deploy-pipeline Web Console]
 
-The column **Last Run** will indicate the last pipelinerun that has occurred for deploy-pipeline.
-The **Last Run Status** will display whether a pipelinerun succeeded or failed.
+The column **Last Run** will indicate the last pipeline run that has occurred for deploy-pipeline.
+The **Last Run Status** will display whether a pipeline run succeeded or failed.
 **Task Status** will show the status of each task that is running as part of deploy-pipeline.
-Finally, **Last Run Time** will indicate how long ago the last pipelinerun for deploy-pipelines
+Finally, **Last Run Time** will indicate how long ago the last pipeline run for deploy-pipelines
 was.
 
 By clicking on the three dots shown in the photo below to the right of the **Last Run Time**, you will see
-how you can trigger a pipelinerun from the web console using the **Start** or **Start Last Run** options
-to start a pipelinerun. The **Start Last Run** option is not available yet as deploy-pipeline
+how you can trigger a pipeline run from the web console using the **Start** or **Start Last Run** options
+to start a pipeline run. The **Start Last Run** option is not available yet as deploy-pipeline
 has never been executed yet. There is also a **Delete** option to remove pipelines from your
 project namespace.
 
@@ -131,7 +131,7 @@ an overview page that shows more information about deploy-pipeline, including ta
 on the pipeline.
 
 This page also features tabs that show the YAML definition of the
-pipeline resource created, all pipelineruns for deploy-pipeline, and the ability to
+pipeline resource created, all pipeline runs for deploy-pipeline, and the ability to
 define parameters as well as resources for deploy-pipeline.
 
 If you click on the **Resources** tab, you will see that deploy-pipeline requires
