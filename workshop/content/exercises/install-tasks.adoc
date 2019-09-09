@@ -47,7 +47,7 @@ and `openshift-client` tasks from the catalog repositories using `oc`. These wil
 be the tasks you add to your pipeline for this tutorial.
 
 Create the `s2i-nodejs` task that will define and build a container image for a
-nodejs-ex application and push the resulting image to an image registry:
+`nodejs-ex` application and push the resulting image to an image registry:
 
 [source,bash,role=execute-1]
 ----

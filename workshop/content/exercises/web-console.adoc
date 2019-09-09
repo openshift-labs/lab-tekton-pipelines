@@ -2,15 +2,28 @@ Now that you have kicked off your pipeline execution, you can view it in the **P
 tab of the OpenShift web console. Click on the **Console** tab at the center top of the
 workshop in your browser to head back out to the web console.
 
-Once back in the web console, you should be on the **Pipelines** tab that will show
-you the current pipelinerun for deploy-pipeline, which will be similar to what is shown
-below:
+Once back in the web console, you should be on the **Pipelines** tab. Click on the
+name of the pipeline you created (i.e. `deploy-pipeline`) under the **Name**
+column. As you will remember from earlier, clicking on the name will take you to
+the overview page for a pipeline that you have in an OpenShift project.
 
-image:../images/web-console-pr.png[Web Console PipelineRun]
+Since you now have a pipeline run for `deploy-pipeline`, you can now view the pipeline runs
+via the **Pipeline Runs** tab as shown below:
 
-To view the current pipelinerun, click on the pipelinerun name under the **Last Run** column.
+image:../images/pipelineruns-tab.png[Pipeline Runs Tab]
 
-After clicking on the pipelinerun name, you should see the tasks as part of
+Click on the **Pipeline Runs** tab to see the pipeline runs for `deploy-pipeline`. Make
+sure to select the **Running** filter to show pipeline runs that are currently executing
+as shown below:
+
+image:../images/pipelineruns-filters.png[Pipeline Runs Filters]
+
+These filters allow you to also filter pipeline runs by ones that have finished (i.e. **Complete**)
+and ones that have failed (i.e. **Failed**).
+
+To view the current pipeline run, click on the pipeline run name under the **Name** column.
+
+After clicking on the pipeline run name, you should see the tasks as part of
 your pipeline executing similar to whats displayed below:
 
 image:../images/web-console-tasks.png[Web Console Tasks]
@@ -18,9 +31,24 @@ image:../images/web-console-tasks.png[Web Console Tasks]
 By hovering your cursor over the `build` task, you can see the steps that the task
 will execute. You can also do this with the `deploy` task.
 
-To verify the pipelinerun executed successfully, head back to the terminal by
-clicking on the **Terminal** tab next to the **Console** tab at the center top of
-the workshop in your browser.
+Just like you can view the logs through `tkn` as you did before, you can also view
+the logs of your pipeline run through the web console by clicking on the **Logs** tab
+of the pipeline runs page as shown below:
+
+image:../images/pipelinerun-logs-tab.png[Pipeline Run Logs Tab]
+
+The logs available through the web console display the executing tasks as part of your
+pipeline run. You should see the `build` task and eventually the `deploy` task display
+on the left side of the web console under the logs tab as shown below:
+
+image:../images/pipelinerun-logs.png[Pipeline Run Logs]
+
+The log output is the same as what `tkn` displays. Each task will show the logs of the
+steps executing.
+
+To verify the pipeline run executed successfully, you can view the logs through the web
+console or head back to the terminal by clicking on the **Terminal** tab next to the
+**Console** tab at the center top of the workshop in your browser.
 
 Once you see the successful deployment verification message shown below, you can
 go out and see the application running on OpenShift:
@@ -30,18 +58,22 @@ go out and see the application running on OpenShift:
 [deploy : oc] deploymentconfig.apps.openshift.io/nodejs-ex rolled out
 ----
 
-If you do not see the message, just wait a minute as the pipelinerun finishes and
-watch the logs continue to come in from `tkn`.
+Through the web console, the log output will look like what is in the screenshot below:
+
+image:../images/web-console-logs-success.png[Web Console Logs Success]
+
+If you do not see the message, just continue to watch the logs come in from the web console
+or `tkn` as your pipeline run finishes up.
 
 You can confirm the successful deployment after the logs show the output above by
-running the `tkn` command you ran earlier to list the pipelineruns:
+running the `tkn` command you ran earlier to list the pipeline runs:
 
 [source,bash,role=execute-2]
 ----
 tkn pr ls
 ----
 
-Under the `STATUS` column of the output, you should see `Succeeded` if the pipelinerun
-was successful. You can also see how long the pipelinerun took to execute under the `DURATION` column.
+Under the `STATUS` column of the output, you should see `Succeeded` if the pipeline run
+was successful. You can also see how long the pipeline run took to execute under the `DURATION` column.
 
 To see the application you have deployed, click Continue to head to the next section.

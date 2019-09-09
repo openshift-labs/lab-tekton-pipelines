@@ -4,7 +4,7 @@ as we have previously discussed.
 
 The OpenShift Pipelines Operator has been pre-installed on the OpenShift cluster for
 this workshop and is ready for use. Your user has been granted the appropriate permissions
-to create pipelines, tasks, pipelineruns, and taskruns for this workshop.
+to create `Pipelines`, `Tasks`, `PipelineRuns`, and `TaskRuns` for this workshop.
 
 The OpenShift Pipelines Operator provides all its resources under a single API group: `tekton.dev`.
 To see all the resources provided by the operator, run the following command:
@@ -42,21 +42,21 @@ When run, if the response is `yes`, you have the appropriate access.
 Verify that you can create the rest of the Tekton custom resources needed for this
 workshop by running the commands below. All of the commands should respond with `yes`.
 
-Verify you can create a Tekton task:
+Verify you can create a Tekton `Task`:
 
 [source,bash,role=execute]
 ----
 oc auth can-i create Task
 ----
 
-Verify you can create a Tekton pipelineresource:
+Verify you can create a Tekton `PipelineResource`:
 
 [source,bash,role=execute]
 ----
 oc auth can-i create PipelineResource
 ----
 
-Verify you can create a Tekton pipelinerun:
+Verify you can create a Tekton `PipelineRun`:
 
 [source,bash,role=execute]
 ----

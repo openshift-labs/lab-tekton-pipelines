@@ -13,9 +13,9 @@ oc project -q
 You will use the link:https://github.com/sclorg/nodejs-ex[nodejs-ex] sample application
 during this workshop (i.e. the Node.js application).
 
-To prepare for nodejs-ex's eventual deployment, you will create Kubernetes objects that
+To prepare for `nodejs-ex's` eventual deployment, you will create Kubernetes objects that
 are supplementary to the application, such as a route (i.e. url). The deployment will not
-complete since there are no container images built for the nodejs-ex application yet.
+complete since there are no container images built for the `nodejs-ex` application yet.
 That you will do in the following sections through a CI/CD pipeline.
 
 Create the supplementary Kubernetes objects by running the command below:
@@ -25,7 +25,7 @@ Create the supplementary Kubernetes objects by running the command below:
 oc create -f sampleapp/sampleapp.yaml
 ----
 
-nodejs-ex also needs a MongoDB database. You can deploy a container with MongoDB
+`nodejs-ex` also needs a MongoDB database. You can deploy a container with MongoDB
 to your OpenShift project by running the following command:
 
 [source,bash,role=execute-1]
@@ -42,7 +42,7 @@ variables are needed by MongoDB for its deployment, such as the username, databa
 password, and the admin password.
 
 Next, let's grab the IP address of the database container. This will be used to connect
-the nodejs-ex application to the MongoDB. Run the command below:
+the `nodejs-ex` application to the MongoDB. Run the command below:
 
 [source,bash,role=execute-1]
 ----
@@ -53,7 +53,7 @@ The above command returns the services running in your OpenShift project and gra
 the `clusterIP` from the first element returned, which will correspond to the MongoDB
 database you just deployed.
 
-The last step is to set an environment variable for nodejs-ex that will provide the
+The last step is to set an environment variable for `nodejs-ex` that will provide the
 application the URL to connect to the MongoDB. This will use the IP address stored
 as the environment variable `CIP` above. To do this, run the following command:
 
@@ -62,7 +62,7 @@ as the environment variable `CIP` above. To do this, run the following command:
 oc set env dc/nodejs-ex MONGO_URL="mongodb://admin:secret@$CIP:27017/mongo_db"
 ----
 
-To verify the resources needed to support nodejs-ex and the MongoDB have been created,
+To verify the resources needed to support `nodejs-ex` and the MongoDB have been created,
 you can head out to the OpenShift web console.
 
 **NOTE:** An error message may appear when you first visit the console due to the fact that your
@@ -86,22 +86,20 @@ image:../images/web-console-project.png[Web Console Project]
 
 Next, click on the **Topology** tab on the left side of the web console if you don't
 see the what's in the image below. Once in the **Topology** view, you can see the deployment
-config for the nodejs-ex application and the MongoDB, which will look similar to what
+config for the `nodejs-ex` application and the MongoDB, which will look similar to what
 is shown in the image below:
 
 image:../images/topology-view.png[Topology View]
 
-You'll notice the white circle around the nodejs-ex deployment config. This means
-that nodejs-ex isn't running yet.
+You'll notice the white circle around the `nodejs-ex` deployment config. This means
+that `nodejs-ex` isn't running yet.
 
 The mongodb-36-centos7 deployment config has a dark blue circle around it, meaning that
 a pod is running with the MongoDB container on it. The MongoDB should be all set
-to support the nodejs-ex application at this point.
+to support the `nodejs-ex` application at this point.
 
-Head back over to the terminal by clicking on the **Terminal** tab next to the **Console**
-tab that you used to get the web console.
-
-In the next section, you'll learn how to use Tekton tasks. Clear your terminal before continuing:
+In the next section, you'll learn how to use Tekton tasks. Clear your terminal before continuing.
+Running the command below will also return you to the terminal:
 
 [source,bash,role=execute-1]
 ----
