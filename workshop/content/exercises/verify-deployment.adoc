@@ -1,4 +1,4 @@
-To verify `nodejs-ex`'s successful deployment, head back out to the web console by
+To verify `nodejs-ex's` successful deployment, head back out to the web console by
 clicking on the **Console** at the center top of the workshop in your browser.
 
 Click on the **Topology** tab on the left side of the web console. You should

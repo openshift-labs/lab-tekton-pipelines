@@ -13,7 +13,7 @@ oc project -q
 You will use the link:https://github.com/sclorg/nodejs-ex[nodejs-ex] sample application
 during this workshop (i.e. the Node.js application).
 
-To prepare for `nodejs-ex`'s eventual deployment, you will create Kubernetes objects that
+To prepare for `nodejs-ex's` eventual deployment, you will create Kubernetes objects that
 are supplementary to the application, such as a route (i.e. url). The deployment will not
 complete since there are no container images built for the `nodejs-ex` application yet.
 That you will do in the following sections through a CI/CD pipeline.
