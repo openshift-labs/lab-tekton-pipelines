@@ -7,9 +7,9 @@ you can specify the specific urls of the git repository and the image registry.
 
 Much like tasks, these pipeline resources are reusable. The git repository pipeline resource
 could be used as an input to a different task on a different pipeline, and the
-image registry output could be used for a different image as the result of a taskrun.
+image registry output could be used for a different image as the result of a task run.
 
-The following pipeline resource defines the git repository and reference for the nodejs-ex application:
+The following pipeline resource defines the git repository and reference for the `nodejs-ex` application:
 
 [source,yaml]
 ----
@@ -29,7 +29,7 @@ the `spec` property we define that this pipeline resource has a type of `git`, m
 it is a git repository. The last property is `params`, which can be used to specify
 the url associated with the git input.
 
-The following defines the OpenShift internal registry for the resulting nodejs-ex
+The following defines the OpenShift internal registry for the resulting `nodejs-ex`
 image to be pushed to:
 
 [source,yaml]
@@ -75,7 +75,7 @@ tkn resource ls
 ----
 
 Now that pipeline resources have been specified, you can include these as part
-of a pipeline run that will deploy the nodejs-ex application out to OpenShift.
+of a pipeline run that will deploy the `nodejs-ex` application out to OpenShift.
 Clear your terminal before continuing:
 
 [source,bash,role=execute-1]

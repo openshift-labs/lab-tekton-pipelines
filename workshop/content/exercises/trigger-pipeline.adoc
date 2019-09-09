@@ -1,10 +1,10 @@
 Now that you have created tasks, a pipeline, and pipeline resources,
-you are ready to trigger a pipeline that will deploy the nodejs-ex application
+you are ready to trigger a pipeline that will deploy the `nodejs-ex` application
 out to OpenShift.
 
 As mentioned earlier, a `PipelineRun` is the custom resource used to trigger a
 pipeline. In this exercise, you will create a `PipelineRun` via `tkn` to deploy
-the nodejs-ex application out to OpenShift.
+the `nodejs-ex` application out to OpenShift.
 
 The `PipelineRun` definition below is how you can trigger a pipeline and tie
 it to the git and image resources that are used for this specific invocation:
@@ -39,7 +39,7 @@ see the pipeline resource references you just created in the `PipelineRun` defin
 
 While learning about the resource definition behind a pipeline run is important,
 you do not have to define this resource yourself to trigger a pipeline run. You
-can create the above `PipelineRun` to deploy the nodejs-ex application out to OpenShift via
+can create the above `PipelineRun` to deploy the `nodejs-ex` application out to OpenShift via
 `tkn`.
 
 The `tkn` command below triggers a pipeline run. The `-r` flag allows you specify

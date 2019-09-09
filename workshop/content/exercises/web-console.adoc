@@ -2,22 +2,17 @@ Now that you have kicked off your pipeline execution, you can view it in the **P
 tab of the OpenShift web console. Click on the **Console** tab at the center top of the
 workshop in your browser to head back out to the web console.
 
-Once back in the web console, you should be on the **Pipelines** tab that will show
-you the current pipeline run for deploy-pipeline, which will be similar to what is shown
-below:
-
-image:../images/web-console-pr.png[Web Console PipelineRun]
-
-Click on the name of the pipeline you created (i.e. deploy-pipeline) under the **Name**
+Once back in the web console, you should be on the **Pipelines** tab.Click on the
+name of the pipeline you created (i.e. `deploy-pipeline`) under the **Name**
 column. As you will remember from earlier, clicking on the name will take you to
 the overview page for a pipeline that you have in an OpenShift project.
 
-Since you now have a pipeline run for deploy-pipeline, you can now view the pipeline runs
+Since you now have a pipeline run for `deploy-pipeline`, you can now view the pipeline runs
 via the **Pipeline Runs** tab as shown below:
 
 image:../images/pipelineruns-tab.png[Pipeline Runs Tab]
 
-Click on the **Pipeline Runs** tab to see the pipeline runs for deploy-pipeline. Make
+Click on the **Pipeline Runs** tab to see the pipeline runs for `deploy-pipeline`. Make
 sure to select the **Running** filter to show pipeline runs that are currently executing
 as shown below:
 
@@ -43,8 +38,8 @@ of the pipeline runs page as shown below:
 image:../images/pipelinerun-logs-tab.png[Pipeline Run Logs Tab]
 
 The logs available through the web console display the executing tasks as part of your
-pipeline run. You should see the `build` and `deploy` tasks display on the left side
-of the web console under the logs tab as shown below:
+pipeline run. You should see the `build` task and eventually the `deploy` task display
+on the left side of the web console under the logs tab as shown below:
 
 image:../images/pipelinerun-logs.png[Pipeline Run Logs]
 
