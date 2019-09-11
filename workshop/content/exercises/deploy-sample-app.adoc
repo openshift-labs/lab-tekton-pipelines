@@ -10,6 +10,9 @@ We can verify the name of the project with:
 oc project -q
 ----
 
+This project name corresponds to the section of the OpenShift image registry discussed
+in the last section.
+
 You will use the link:https://github.com/sclorg/nodejs-ex[nodejs-ex] sample application
 during this workshop (i.e. the Node.js application).
 

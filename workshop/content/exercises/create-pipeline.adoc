@@ -6,7 +6,7 @@ application from GitHub and then builds and deploys it on OpenShift using S2I an
 
 Below is a YAML file that represents the above pipeline:
 
-[source,yaml]
+[source,yaml,role=copy]
 ----
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
@@ -86,6 +86,57 @@ image:../images/pipeline-visual.png[Pipeline Visualization]
 Create the Pipeline
 -------------------
 
+To create the pipeline described above, you have the options of either using the OpenShift web
+console or `oc` from the command line. Instructions are available for both options below. Only
+go through the steps for one option, but feel free to read and learn both ways of creating a pipeline.
+
+Web Console
+-----------
+
+To create a pipeline through the web console, start by copying the pipeline YAML
+definition above. You can do this by clicking on the icon shown below in the screenshot
+on the pipeline YAML definition above. Simply scroll back up to the pipeline definition
+to proceed with copying the pipeline definition.
+
+image:../images/copy-icon.png[Copy Icon]
+
+Next, head out to the OpenShift web console by clicking on the
+**Console** tab at the center top of the workshop in your browser.
+
+Once in the web console, you will notice the icons shown in the screenshot below
+at the top of the web console.
+
+image:../images/import-yaml.png[Import YAML]
+
+Click the plus (**+**) symbol. Clicking this button will take you to the Import YAML
+section of the web console where you can add the YAML definition of Kubernetes resources you
+want to create. This page isn't just for creating a Tekton pipeline resource as you can
+create any Kubernetes resource definition on this page, including other Tekton resources.
+
+Using the paste shortcut on your laptop (e.g. `command + v for Macs`, `control + v for PCs`, etc.),
+paste the YAML definition of the pipeline you copied earlier into the text editor on
+the web console screen.
+
+Now that your pipeline definition is in the text editor, click the **Create** button
+underneath the text editor.
+
+After clicking **Create**, you will be taken to the **Pipelines** tab of the web console
+and should see an overview page with details about the pipeline you created similar
+to what is shown in the screenshot below:
+
+image:../images/pipeline-overview.png[Pipeline Overview]
+
+You will learn more about this page in a little bit in this section, but, for now, head over
+to the main page of the **Pipelines** tab by clicking on the **Pipelines** tab on
+the left side of the web console.
+
+To continue with the workshop, head to the **Pipeline Web Console Features** portion
+of this section, but also feel free to read about creating a pipeline through `oc`. Just
+remember to not run the `oc create` command since you have already created your pipeline.
+
+OpenShift CLI
+-------------
+
 The command below uses `oc` to take the pipeline definition from above from a
 local directory and then creates it in your OpenShift project. Run the command below to
 create the pipeline:
@@ -102,13 +153,19 @@ You can see the pipeline you have created using `tkn`:
 tkn pipeline ls
 ----
 
-You can also view the pipeline through the OpenShift web console by clicking on the
+You can view the pipeline through the OpenShift web console by clicking on the
 **Console** tab at the center top of the workshop in your browser.
 
 Next, click on the **Pipelines** tab on the left side of the web console.
 
-You should see the pipeline you just created (i.e. `deploy-pipeline`) listed like in
-the image below:
+Pipeline Web Console Features
+-----------------------------
+
+Now that you have created your pipeline, you can view it via the OpenShift web console.
+Make sure you are on the **Pipelines** tab main page of the web console.
+
+Once on this page, you should see the pipeline you just created (i.e. `deploy-pipeline`)
+listed like in the image below:
 
 image:../images/deploy-pipeline-console.png[deploy-pipeline Web Console]
 
@@ -143,7 +200,7 @@ You will need to create these resources so that `deploy-pipeline` has the proper
 input and knows where to push the resulting image for `nodejs-ex` to.
 
 Before moving on to the next section, click the **Pipelines** tab on the left side
-of the web console to return to the Pipelines page.
+of the web console to return to the **Pipelines** tab main page.
 
 In the next section, you will focus on creating the `app-git` and `app-image` pipeline
 resources. Clear your terminal before continuing:
