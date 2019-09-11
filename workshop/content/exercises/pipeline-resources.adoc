@@ -74,6 +74,34 @@ You can see the pipeline resources created using `tkn`:
 tkn resource ls
 ----
 
+You can also get more information about the pipeline resources in your OpenShift project
+using the command below. Run the command below to see information about the `nodejs-ex-git`
+pipeline resource:
+
+[source,bash,role=execute-1]
+----
+tkn resource describe nodejs-ex-git
+----
+
+You should see the `Name` of the pipeline resource, the `Namespace` (i.e. your OpenShift project)
+it has been created in, and a `PipelineResource Type` of `git` to specify this is a git repository.
+
+It also shows the url of the git repository you will use under the `Params` section
+of the output. You will also notice a section of the output called `Secret Params`. These
+secret params are how you can mask sensitive information associated with pipeline resources,
+such as a password or key.
+
+You can also describe the `nodejs-ex-image` pipeline resource by running the command below:
+
+[source,bash,role=execute-1]
+----
+tkn resource describe nodejs-ex-image
+----
+
+The major difference you should notice is that `nodejs-ex-image` is of `PipelineResource Type`
+`image`. You should also notice the OpenShift image registry url that is specific to the
+OpenShift project you are working in.
+
 Now that pipeline resources have been specified, you can include these as part
 of a pipeline run that will deploy the `nodejs-ex` application out to OpenShift.
 Clear your terminal before continuing:

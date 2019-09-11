@@ -14,7 +14,7 @@ modules:
     exercises/deploy-sample-app:
         name: Deploy a Sample Application
     exercises/install-tasks:
-        name: Install Tasks
+        name: Create Tasks
     exercises/task-definitions:
         name: Task Resource Definitions
     exercises/create-pipeline:
@@ -25,6 +25,8 @@ modules:
         name: Trigger a Pipeline
     exercises/web-console:
         name: Web Console Visualization
+    exercises/post-pipelinerun:
+        name: Pipeline Run Breakdown
     exercises/verify-deployment:
         name: Verify Deployment
     workshop-summary:

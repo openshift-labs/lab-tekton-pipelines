@@ -15,5 +15,6 @@ modules:
     - exercises/pipeline-resources
     - exercises/trigger-pipeline
     - exercises/web-console
+    - exercises/post-pipelinerun
     - exercises/verify-deployment
     - workshop-summary

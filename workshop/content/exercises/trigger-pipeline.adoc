@@ -74,6 +74,20 @@ tkn pr ls
 You should see the `NAME` of your pipeline run, the pipeline run start time (i.e. `STARTED`),
 and the `STATUS` as `Running`.
 
+As mentioned earlier, when a task is running as part of a pipeline, it allocates
+a pod that will host steps that each run in a separate container. You can see
+the pod for the first task on your pipeline (i.e. `build`) by running the following
+command:
+
+[source,bash,role=execute-1]
+----
+oc get pods
+----
+
+You should see a pod with a name consisting of `deploy-pipeline-run` and `build`.
+When `build` finishes, another pod will be allocated to host the step of the `deploy`
+task of your pipeline.
+
 Tekton CLI Logs
 ---------------
 

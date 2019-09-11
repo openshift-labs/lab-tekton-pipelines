@@ -66,7 +66,8 @@ If you do not see the message, just continue to watch the logs come in from the 
 or `tkn` as your pipeline run finishes up.
 
 You can confirm the successful deployment after the logs show the output above by
-running the `tkn` command you ran earlier to list the pipeline runs:
+running the `tkn` command you ran earlier to list the pipeline runs. Please note that
+this will execute in the lower of the two terminals.
 
 [source,bash,role=execute-2]
 ----
@@ -76,4 +77,16 @@ tkn pr ls
 Under the `STATUS` column of the output, you should see `Succeeded` if the pipeline run
 was successful. You can also see how long the pipeline run took to execute under the `DURATION` column.
 
-To see the application you have deployed, click Continue to head to the next section.
+Before seeing the application successfully deployed on OpenShift, let's look at some
+aspects of the pipeline run that just occurred in the next section. Clear your terminals
+before continuing:
+
+[source,bash,role=execute-1]
+----
+clear
+----
+
+[source,bash,role=execute-2]
+----
+clear
+----
