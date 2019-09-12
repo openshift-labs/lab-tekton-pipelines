@@ -35,7 +35,7 @@ will want to set the `n` as part of `--override SERVER_LIMIT=n` to the number of
 you will expect as part of your workshop. 
 
 ```
-./.workshop/scripts/deploy-spawner.sh
+./.workshop/scripts/deploy-spawner.sh --override SERVER_LIMIT=n
 ```
 
 The name of the deployment will be `lab-tekton-pipelines`.
