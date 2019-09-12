@@ -117,7 +117,7 @@ run during this task. Each step is denoted by its `name`. `s2i-nodejs` has three
 
 Each step above runs in its own container. Since the generate step uses an `s2i`
 command to generate a Dockerfile from the source code from the git repository input,
-the image used for its container will have S2I` installed.
+the image used for its container will have S2I installed.
 
 The `build` and `push` steps both use a Buildah image to run commands to build the Dockerfile created by the
 generate step and then push that image to an image registry (i.e., the output of the task).
