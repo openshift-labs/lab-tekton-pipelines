@@ -1,6 +1,6 @@
 For this tutorial, you're going to use a simple Node.js application that interacts with a
 MongoDB database. The workshop is configured to provide you a pre-created OpenShift project
-(i.e., Kubernetes namespace) where you will set up supplementary resources for your
+(i.e. Kubernetes namespace) where you will set up supplementary resources for your
 application for its eventual deployment.
 
 We can verify the name of the project with:
@@ -44,25 +44,29 @@ installed. It also sets environment variables using the `-e` option. These envir
 variables are needed by MongoDB for its deployment, such as the username, database name,
 password, and the admin password.
 
-Next, let's grab the IP address of the database container. This will be used to connect
-the `nodejs-ex` application to the MongoDB. Run the command below:
-
-[source,bash,role=execute-1]
-----
-export CIP=$(oc get svc -o jsonpath={.items[0].spec.clusterIP})
-----
-
-The above command returns the services running in your OpenShift project and grabs
-the `clusterIP` from the first element returned, which will correspond to the MongoDB
-database you just deployed.
-
 The last step is to set an environment variable for `nodejs-ex` that will provide the
-application the URL to connect to the MongoDB. This will use the IP address stored
-as the environment variable `CIP` above. To do this, run the following command:
+application the url to connect to the MongoDB. This will use the service name of the
+MongoDB (i.e. `mongodb-36-centos7`) stored as part of an environment variable.
+
+A service is an abstract way to expose an application running on a set of pods as a network
+service. Using this service name will allow `nodejs-ex` to reference a consistent endpoint in
+the event the pod hosting your MongoDB container is updated from events such as scaling
+pods up or down or re-deploying your MongoDB container image with updates.
+
+You can see all the services, including the one for `nodejs-ex` in your OpenShift project
+by running the following command:
 
 [source,bash,role=execute-1]
 ----
-oc set env dc/nodejs-ex MONGO_URL="mongodb://admin:secret@$CIP:27017/mongo_db"
+oc get services
+----
+
+Now that you are familiar with Kubernetes services, go ahead a connect `nodejs-ex` to
+the MongoDB. To do this, run the following command:
+
+[source,bash,role=execute-1]
+----
+oc set env dc/nodejs-ex MONGO_URL="mongodb://admin:secret@mongodb-36-centos7:27017/mongo_db"
 ----
 
 To verify the resources needed to support `nodejs-ex` and the MongoDB have been created,
@@ -95,9 +99,11 @@ is shown in the image below:
 image:../images/topology-view.png[Topology View]
 
 You'll notice the white circle around the `nodejs-ex` deployment config. This means
-that `nodejs-ex` isn't running yet.
+that `nodejs-ex` isn't running yet. More specifically, no container hosting the `nodejs-ex`
+application has been created, built, and deployed yet. This will happen via the CI/CD pipeline
+you eventually will create.
 
-The mongodb-36-centos7 deployment config has a dark blue circle around it, meaning that
+The `mongodb-36-centos7` deployment config has a dark blue circle around it, meaning that
 a pod is running with the MongoDB container on it. The MongoDB should be all set
 to support the `nodejs-ex` application at this point.
 
