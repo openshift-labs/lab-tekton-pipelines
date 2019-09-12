@@ -86,7 +86,7 @@ image:../images/pipeline-visual.png[Pipeline Visualization]
 Create the Pipeline
 -------------------
 
-To create the pipeline described above, you have the options of either using the OpenShift web
+To create the pipeline described above, you have the option of either using the OpenShift web
 console or `oc` from the command line. Instructions are available for both options below. Only
 go through the steps for one option, but feel free to read and learn both ways of creating a pipeline.
 
