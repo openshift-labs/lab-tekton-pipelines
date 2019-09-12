@@ -26,7 +26,22 @@ spec:
 
 You can see above that the resource has a name (i.e. `nodejs-ex-git`) and under
 the `spec` property we define that this pipeline resource has a type of `git`, meaning
-it is a git repository. The last property is `params`, which can be used to specify
+it is a git repository.
+
+The `type` of a pipeline resource corresponds to a list a valid options for pipeline resources.
+These valid options include:
+
+* `git` - indicates a pipeline resource is a GitHub repository
+* `image` - indicates a pipeline resource is a container image
+* `storage` - indicates a pipeline resource is a storage blob resource
+* `cluster` - indicates a pipeline resource is a Kubernetes cluster image
+* `pullRequest` - indicates a pipeline resource is an SCM pull request
+* `cloudEvent` - indicates a pipeline resource is a cloud event URI
+
+There will be more valid types added to the Tekton API moving forward, but you will
+only need to focus on the `git` and `image` types for this workshop.
+
+The last property of `nodejs-ex-git` is `params`, which can be used to specify
 the url associated with the git input.
 
 The following defines the OpenShift internal registry for the resulting `nodejs-ex`
