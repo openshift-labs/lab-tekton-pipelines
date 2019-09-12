@@ -4,7 +4,7 @@ Lab - OpenShift Pipelines with Tekton
 This workshop provides an introduction to OpenShift Pipelines with Tekton.
 Please check [releases](https://github.com/openshift-labs/lab-tekton-pipelines/releases)
 for the latest version of the workshop and also make sure to note if a version
-released has been deprecated. 
+released has been deprecated.
 
 The workshop uses the HomeRoom workshop environment in the learning portal configuration.
 You will need to be a cluster admin in order to deploy it.
@@ -30,7 +30,9 @@ Next create a project in OpenShift into which the workshop is to be deployed.
 oc new-project workshops
 ```
 
-From within the top level of the Git repository, now run:
+From within the top level of the Git repository, now run the command below. **NOTE:** You
+will want to set the `n` as part of `--override SERVER_LIMIT=n` to the number of users
+you will expect as part of your workshop. 
 
 ```
 ./.workshop/scripts/deploy-spawner.sh
