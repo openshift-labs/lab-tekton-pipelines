@@ -2,8 +2,6 @@ apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
   name: openshift-client
-  labels:
-    app: tekton-workshop
 spec:
   inputs:
     params:
@@ -12,7 +10,7 @@ spec:
         default: help
   steps:
     - name: oc
-      image: quay.io/openshift-pipeline/openshift-cli:latest
+      image: quay.io/openshiftlabs/openshift-cli-tekton-workshop:2.0
       command: ["/usr/local/bin/oc"]
       args:
         - "${inputs.params.ARGS}"
