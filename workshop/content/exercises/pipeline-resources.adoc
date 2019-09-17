@@ -24,8 +24,8 @@ spec:
     value: https://github.com/sclorg/nodejs-ex
 ----
 
-You can see above that the resource has a name (i.e. `nodejs-ex-git`) and under
-the `spec` property we define that this pipeline resource has a type of `git`, meaning
+You can see above that the resource has a name (i.e. `nodejs-ex-git`), and, under
+the `spec` property, we define that this pipeline resource has a type of `git`, meaning
 it is a git repository.
 
 The `type` of a pipeline resource corresponds to a list a valid options for pipeline resources.

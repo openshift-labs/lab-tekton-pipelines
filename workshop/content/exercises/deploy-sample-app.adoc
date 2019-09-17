@@ -61,7 +61,7 @@ by running the following command:
 oc get services
 ----
 
-Now that you are familiar with Kubernetes services, go ahead a connect `nodejs-ex` to
+Now that you are familiar with Kubernetes services, go ahead and connect `nodejs-ex` to
 the MongoDB. To do this, run the following command:
 
 [source,bash,role=execute-1]
@@ -100,11 +100,10 @@ image:../images/topology-view.png[Topology View]
 
 You'll notice the white circle around the `nodejs-ex` deployment config. This means
 that `nodejs-ex` isn't running yet. More specifically, no container hosting the `nodejs-ex`
-application has been created, built, and deployed yet. This will happen via the CI/CD pipeline
-you eventually will create.
+application has been created, built, and deployed yet.
 
 The `mongodb-36-centos7` deployment config has a dark blue circle around it, meaning that
-a pod is running with the MongoDB container on it. The MongoDB should be all set
+a pod is running with a MongoDB container on it. The MongoDB should be all set
 to support the `nodejs-ex` application at this point.
 
 In the next section, you'll learn how to use Tekton tasks. Clear your terminal before continuing.
