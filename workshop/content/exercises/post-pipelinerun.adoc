@@ -13,7 +13,7 @@ below:
 
 image:../images/task-logs.png[Task Logs]
 
-The green circle with a check icon mean the tasks ran successfully. Click on
+The green circles with the check icons mean the tasks ran successfully. Click on
 the `build` task to dig into what the `build` task executed.
 
 You should notice the first step that executed as part of the `build` task: `STEP-GENERATE`.

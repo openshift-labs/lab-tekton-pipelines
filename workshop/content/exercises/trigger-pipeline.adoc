@@ -59,10 +59,9 @@ tkn pipeline start deploy-pipeline \
         -s pipeline
 ----
 
-After running the command above, the pipeline you created earlier is now
-instantiated and a number of pods are created to execute the tasks that are
-defined as part of the pipeline. After 4-5 minutes, the pipeline run should
-finish successfully.
+After running the command above, the pipeline you created earlier is now running
+and a number of pods are created to execute the tasks that are defined as part of the
+pipeline. After 4-5 minutes, the pipeline run should finish successfully.
 
 To view the pipeline run created, run the following `tkn` command:
 

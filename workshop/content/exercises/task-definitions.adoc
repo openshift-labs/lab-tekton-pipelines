@@ -115,9 +115,9 @@ run during this task. Each step is denoted by its `name`. `s2i-nodejs` has three
     privileged: true
 ----
 
-Each step above runs in its own container. Since the generate step uses an `s2i`
+Each step above runs in its own container. Since the `generate` step uses an s2i
 command to generate a Dockerfile from the source code from the git repository input,
-the image used for its container will have S2I installed.
+the image used for its container will have s2i installed.
 
 The `build` and `push` steps both use a Buildah image to run commands to build the Dockerfile created by the
 generate step and then push that image to an image registry (i.e., the output of the task).
@@ -128,7 +128,7 @@ The order of the steps above (i.e. 1. `generate` 2. `build` 3. `push`) is used t
 when these steps should run. For `s2i-nodejs`, this means `generate` will run followed
 by `build` and then the `push` step will execute last.
 
-Under the resources property of each step, the amount of resources needed for the
+Under the `resources` property of each step, the amount of resources needed for the
 container in terms of cpu and memory can be defined.
 
 [source,yaml]
@@ -152,8 +152,6 @@ apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
   name: openshift-client
-  labels:
-    app: tekton-workshop
 spec:
   inputs:
     params:
@@ -171,8 +169,8 @@ spec:
 `openshift-client` doesn't have any inputs or outputs associated with it.
 It also only has one step named `oc`.
 
-This step uses an image with `oc` and runs the `oc` root command along with any
-args passed to the step under the args property. This `task` allows you to run
+This step uses an image with `oc` installed and runs the `oc` root command along with any
+args passed to the step under the `args` property. This `task` allows you to run
 any command with `oc`. You will use it to deploy the image created by the `s2i-nodejs`
 task to OpenShift. You will see how this takes place in the next section.
 
