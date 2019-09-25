@@ -30,16 +30,16 @@ Next create a project in OpenShift into which the workshop is to be deployed.
 oc new-project workshops
 ```
 
-**NOTE:** The default max number of sessions (i.e. users who can access the workshop at the same time) defaults to 50. The number for the max number
-of sessions can be set in [settings.sh](./.workshop/settings.sh) using the `SERVER_LIMIT` property. If 50 is not enough sessions or too many, the amount can be increased or decreased by changing the property from 50 to the expected number of users. It's also important to make sure your OpenShift cluster can support as many users that the workshop needs. 
-
 From within the top level of the Git repository, now run the command below.
 
 ```
 .workshop/scripts/deploy-spawner.sh
 ```
 
-The name of the deployment will be `lab-tekton-pipelines`.
+**NOTE:** The default max number of sessions (i.e. users who can access the workshop at the same time) defaults to 50. The number for the max number
+of sessions can be overridden when running the `deploy-spawner.sh` script by supplying the `--override SERVER_LIMIT=50` option. If 50 is not enough sessions, or too many, the amount can be increased or decreased by changing the value from 50 to the expected number of users. Your cluster should have enough resources to support the number of users in your workshop. Each user is given a quota of 8Gi of memory. If you don't set this up front and need to change it later, you can edit the `SERVER_LIMIT` environment variable on the spawner deployment config. Changing it will cause all currently running sessions to be stopped, so avoid changing it during a workshop.
+
+When deployed the name of the deployment will be `lab-tekton-pipelines`.
 
 You can determine the hostname for the URL to access the workshop by running:
 
