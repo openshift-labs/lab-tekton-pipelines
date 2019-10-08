@@ -24,7 +24,7 @@ and ones that have failed (i.e. **Failed**).
 To view the current pipeline run, click on the pipeline run name under the **Name** column.
 
 After clicking on the pipeline run name, you should see the tasks as part of
-your pipeline executing similar to whats displayed below:
+your pipeline executing similar to what's displayed below:
 
 image:../images/web-console-tasks.png[Web Console Tasks]
 
