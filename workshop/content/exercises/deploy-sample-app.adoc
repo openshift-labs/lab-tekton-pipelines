@@ -33,7 +33,7 @@ to your OpenShift project by running the following command:
 
 [source,bash,role=execute-1]
 ----
-oc new-app centos/mongodb-36-centos7 -e MONGODB_USER=admin MONGODB_DATABASE=mongo_db MONGODB_PASSWORD=secret MONGODB_ADMIN_PASSWORD=super-secret
+oc new-app centos/mongodb-36-centos7 -e MONGODB_USER=admin MONGODB_DATABASE=mongodb MONGODB_PASSWORD=secret MONGODB_ADMIN_PASSWORD=super-secret
 ----
 
 You should see `-> Success` in the output of the command, which verifies the successful
@@ -66,7 +66,7 @@ the MongoDB. To do this, run the following command:
 
 [source,bash,role=execute-1]
 ----
-oc set env dc/nodejs-ex MONGO_URL="mongodb://admin:secret@mongodb-36-centos7:27017/mongo_db"
+oc set env dc/nodejs-ex MONGO_URL="mongodb://admin:secret@mongodb-36-centos7:27017/mongodb"
 ----
 
 To verify the resources needed to support `nodejs-ex` and the MongoDB have been created,
