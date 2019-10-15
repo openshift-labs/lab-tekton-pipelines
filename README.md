@@ -47,6 +47,8 @@ You can determine the hostname for the URL to access the workshop by running:
 oc get route lab-tekton-pipelines
 ```
 
+When the URL is accessed, you will be prompted to login. For the user name, use your email address or other name which would uniquely identify you. This is just used as an identifier for your session if you need to login again to the same session again. What you use for the user name isn't recorded in any way. For the password, use "openshift".
+
 Editing the Workshop
 --------------------
 
