@@ -8,3 +8,4 @@ spec:
   csPublisher: Community
   targetNamespace: openshift-operators
   packages: openshift-pipelines-operator
+  source: installed-openshift-pipelines
