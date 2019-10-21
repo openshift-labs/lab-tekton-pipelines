@@ -9,4 +9,4 @@ spec:
   name: openshift-pipelines-operator
   source: installed-openshift-pipelines
   sourceNamespace: openshift-operators
-  startingCSV: openshift-pipelines-operator.v0.5.2
+  startingCSV: openshift-pipelines-operator.v0.7.0
