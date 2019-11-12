@@ -63,9 +63,20 @@ After running the command above, the pipeline you created earlier is now running
 and a number of pods are created to execute the tasks that are defined as part of the
 pipeline. After 4-5 minutes, the pipeline run should finish successfully.
 
+Additionally, you will begin to see the pipeline run logs immediately after the pod
+for the first task is done initializing.
+
+Before continuing, grab the name of the pipeline run and save it to an environment
+variable so you can learn more about the pipeline run later in this workshop:
+
+[source,bash,role=execute-2]
+----
+RUN=`tkn pr ls -o jsonpath='{$.items[?(@.status.conditions[0].reason=="Running")].metadata.name}' | tr ' ' '\n' | head -1`; echo $RUN
+----
+
 To view the pipeline run created, run the following `tkn` command:
 
-[source,bash,role=execute-1]
+[source,bash,role=execute-2]
 ----
 tkn pr ls
 ----
@@ -78,7 +89,7 @@ a pod that will host steps that each run in a separate container. You can see
 the pod for the first task on your pipeline (i.e. `build`) by running the following
 command:
 
-[source,bash,role=execute-1]
+[source,bash,role=execute-2]
 ----
 oc get pods
 ----
@@ -89,24 +100,6 @@ task of your pipeline.
 
 Tekton CLI Logs
 ---------------
-
-To view the logs for the pipeline run, you need the unique name assigned to it
-when you ran `tkn pipeline start`. This is the same name as `tkn pr ls` outputs.
-
-To grab the name of this into an environment variable, run:
-
-[source,bash,role=execute-1]
-----
-RUN=`tkn pr ls -o jsonpath='{$.items[?(@.status.conditions[0].reason=="Running")].metadata.name}' | tr ' ' '\n' | head -1`; echo $RUN
-----
-
-Then run the following `tkn` command to access the logs of the pipeline run using the environment
-variable to specify the name of the pipeline run:
-
-[source,bash,role=execute-1]
-----
-tkn pr logs $RUN -f
-----
 
 The logs output tells you what tasks are running as well as what step it is running.
 You'll see the output structured as `[task_name : step_name]`. An example from this
@@ -144,3 +137,9 @@ While the pipeline run is executing, you can take a look at how you can visualiz
 a pipeline run through the OpenShift web console in the next section. Leave the logs
 running so that you can confirm the successful deployment message when the pipeline run
 finishes.
+
+Clear the terminal without the running logs before continuing:
+[source,bash,role=execute-2]
+----
+clear
+----

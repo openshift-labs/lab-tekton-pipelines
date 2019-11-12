@@ -46,7 +46,7 @@ to see the output of this step.
 You can also view more information about the pipeline run via `tkn` by running the
 command below:
 
-[source,bash,role=execute-1]
+[source,bash,role=execute-2]
 ----
 tkn pr describe $RUN
 ----
