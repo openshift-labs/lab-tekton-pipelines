@@ -1,23 +1,29 @@
 apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
-  name: configmap-extra-resources
+  name: configmap-session-resources
 parameters:
+- name: NAME_PREFIX
+  value: ""
+  required: false
+- name: WORKSHOP_NAME
+  value: ""
+  required: true
 - name: SPAWNER_NAMESPACE
   value: ""
   required: true
-- name: SPAWNER_APPLICATION
-  value: ""
+- name: SPAWNER_MODE
+  value: "learning-portal"
   required: true
 objects:
 - apiVersion: v1
   kind: ConfigMap
   metadata:
-    name: ${SPAWNER_APPLICATION}-res
-    namespace: ${SPAWNER_NAMESPACE}
+    name: ${NAME_PREFIX}${WORKSHOP_NAME}-session-resources
     labels:
-      app: ${SPAWNER_APPLICATION}-${SPAWNER_NAMESPACE}
-      spawner: learning-portal
+      app: ${NAME_PREFIX}${WORKSHOP_NAME}
+      spawner: ${SPAWNER_MODE}
+      class: spawner
   data:
     extra_resources.yaml: |-
         kind: List

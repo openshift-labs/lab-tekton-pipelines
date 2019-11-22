@@ -3,20 +3,27 @@ kind: Template
 metadata:
   name: clusterroles-session-rules
 parameters:
+- name: NAME_PREFIX
+  value: ""
+  required: false
+- name: WORKSHOP_NAME
+  value: ""
+  required: true
 - name: SPAWNER_NAMESPACE
   value: ""
   required: true
-- name: SPAWNER_APPLICATION
-  value: ""
+- name: SPAWNER_MODE
+  value: "learning-portal"
   required: true
 objects:
 - apiVersion: authorization.openshift.io/v1
   kind: ClusterRole
   metadata:
+    name: ${NAME_PREFIX}${WORKSHOP_NAME}-session-rules
     labels:
-      app: ${SPAWNER_APPLICATION}-${SPAWNER_NAMESPACE}
-      spawner: learning-portal
-    name: ${SPAWNER_APPLICATION}-${SPAWNER_NAMESPACE}-session-rules
+      app: ${NAME_PREFIX}${WORKSHOP_NAME}
+      spawner: ${SPAWNER_MODE}
+      class: spawner
   rules:
   - apiGroups:
     - "tekton.dev"
