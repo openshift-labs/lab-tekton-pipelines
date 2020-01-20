@@ -22,7 +22,7 @@ To validate that your user has been granted the appropriate roles, you can use t
 command to see whether you can create Kubernetes custom resources of the kind the OpenShift Pipelines Operator
 responds to.
 
-The custom resource you need to create an OpenShift Pipelines pipeline is a resource of the
+The custom resource you need to create an OpenShift Pipeline is a resource of the
 kind `pipeline.tekton.dev` in the `tekton.dev` API group. To check that you can create this, run:
 
 [source,bash,role=execute]

@@ -21,8 +21,8 @@ for building and deploying a containerized app on OpenShift.
 In this tutorial, you will do the following:
 
 * Learn about Tekton concepts
-* Install tasks
-* Create a pipeline
-* Add pipeline resources
-* Trigger a pipelinerun
-* Deploy a sample application on OpenShift from a pipelinerun
+* Install `Tasks`
+* Create a `Pipeline`
+* Add `PipelineResources`
+* Trigger a `PipelineRun`
+* Deploy a sample application on OpenShift from a `PipelineRun`

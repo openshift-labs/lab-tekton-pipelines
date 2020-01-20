@@ -25,7 +25,7 @@ The `params` property below defines fields that must be specified when using the
 params:
   - name: VERSION
     description: The version of the nodejs
-    default: '8'
+    default: '12'
   - name: PATH_CONTEXT
     description: The location of the path to run s2i from.
     default: .
@@ -57,7 +57,7 @@ run during this task. Each step is denoted by its `name`. `s2i-nodejs` has three
 - name: generate
   image: quay.io/openshift-pipeline/s2i
   workingdir: /workspace/source
-  command: ['s2i', 'build', '$(inputs.params.PATH_CONTEXT)', 'registry.access.redhat.com/rhscl/nodejs-$(inputs.params.VERSION)-rhel7', '--as-dockerfile', '/gen-source/Dockerfile.gen']
+  command: ['s2i', 'build', '$(inputs.params.PATH_CONTEXT)', 'registry.access.redhat.com/ubi8/nodejs-$(inputs.params.VERSION)', '--as-dockerfile', '/gen-source/Dockerfile.gen']
   volumeMounts:
     - name: gen-source
       mountPath: /gen-source
