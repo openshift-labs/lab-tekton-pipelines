@@ -2,36 +2,28 @@ config:
     google_tracking_id: UA-135921114-10
     
 modules:
-    workshop-introduction:
+    intro:
         name: Workshop Introduction
-    workshop-overview:
-        name: Workshop Overview
-    concepts:
-        name: Tekton Concepts
-    install-tekton-operator:
+    01install-op:
         name: Install OpenShift Pipelines Operator
-    verify-workshop-environment:
-        name: Verify Workshop Environment
-    exercises/serviceaccount:
+    02serviceaccount:
         name: Pipeline Service Account
-    exercises/deploy-sample-app:
+    03deploy-sample:
         name: Deploy a Sample Application
-    exercises/install-tasks:
+    04create-task:
         name: Create Tasks
-    exercises/task-definitions:
+    05task-resource-def:
         name: Task Resource Definitions
-    exercises/create-pipeline:
+    06create-pipeline:
         name: Create a Pipeline
-    exercises/pipeline-resources:
+    07create-pipeline-resources:
         name: Create Pipeline Resources
-    exercises/trigger-pipeline:
+    08trigger-pipeline:
         name: Trigger a Pipeline
-    exercises/web-console:
+    09pipelines-console:
         name: Web Console Visualization
-    exercises/post-pipelinerun:
-        name: Pipeline Run Breakdown
-    exercises/verify-deployment:
+    10verify-deployment:
         name: Verify Deployment
-    workshop-summary:
+    finish:
         name: Workshop Summary
         exit_sign: Finish Workshop
