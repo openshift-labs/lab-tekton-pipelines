@@ -2,19 +2,15 @@ name: OpenShift Pipelines with Tekton
 
 modules:
     activate:
-    - workshop-introduction
-    - workshop-overview
-    - concepts
-    - install-tekton-operator
-    - verify-workshop-environment
-    - exercises/serviceaccount
-    - exercises/deploy-sample-app
-    - exercises/install-tasks
-    - exercises/task-definitions
-    - exercises/create-pipeline
-    - exercises/pipeline-resources
-    - exercises/trigger-pipeline
-    - exercises/web-console
-    - exercises/post-pipelinerun
-    - exercises/verify-deployment
-    - workshop-summary
+    - intro
+    - 01install-op
+    - 02serviceaccount
+    - 03deploy-sample
+    - 04create-task
+    - 05task-resource-def
+    - 06create-pipeline
+    - 07create-pipeline-resources
+    - 08trigger-pipeline
+    - 09pipelines-console
+    - 10verify-deployment
+    - finish
