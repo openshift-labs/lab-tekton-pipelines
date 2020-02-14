@@ -1,5 +1,5 @@
 WORKSHOP_NAME=lab-tekton-pipelines
-WORKSHOP_IMAGE=quay.io/openshiftlabs/lab-tekton-pipelines:3.2
+WORKSHOP_IMAGE=quay.io/openshiftlabs/lab-tekton-pipelines:4.0
 WORKSHOP_TITLE="OpenShift Pipelines with Tekton"
 WORKSHOP_DESCRIPTION="Developing applications using OpenShift pipelines"
 CONSOLE_IMAGE=quay.io/openshift/origin-console:4.2
