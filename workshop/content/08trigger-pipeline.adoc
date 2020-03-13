@@ -45,9 +45,14 @@ tkn pipeline start deploy-pipeline \
 
 After running this command, the pipeline you created earlier is now running. Some pods get created to execute the tasks defined as part of the pipeline. After 4-5 minutes, the pipeline run should finish successfully.
 
-Additionally, you will begin to see the pipeline run logs immediately after the pod for the first task is done initializing.
-
 == Tekton CLI Logs
+
+To see the logs for your Tekton pipeline run, you can use the provided command or run the following:
+
+[source,bash,role=execute]
+----
+tkn pipelinerun logs $(tkn pipelineruns list | grep deploy-pipeline-run | awk '{print $1, $8}') -f
+----
 
 The logs output tells you what tasks are running as well as what step it is running. You’ll see the output structured as [task_name : step_name]. An example from this pipeline run is below for the _generate_ step of the build task:
 
