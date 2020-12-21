@@ -6,23 +6,17 @@ modules:
         name: Workshop Introduction
     01install-op:
         name: Install OpenShift Pipelines Operator
-    02serviceaccount:
-        name: Pipeline Service Account
-    03deploy-sample:
-        name: Deploy a Sample Application
-    04create-task:
-        name: Create Tasks
-    05task-resource-def:
+    02new-project:
+        name: Create a New Project for your Pipelines
+    03create-task:
+        name: Create Tasls
+    04task-resource-def:
         name: Task Resource Definitions
-    06create-pipeline:
+    05create-pipeline:
         name: Create a Pipeline
-    07create-pipeline-resources:
-        name: Create Pipeline Resources
-    08trigger-pipeline:
+    06trigger-pipeline:
         name: Trigger a Pipeline
-    09pipelines-console:
-        name: Web Console Visualization
-    10verify-deployment:
+    07verify-deployment:
         name: Verify Deployment
     finish:
         name: Workshop Summary
