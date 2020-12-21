@@ -39,12 +39,12 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: openshift-pipelines-operator
-  namespace: openshift-operators 
+  namespace: openshift-operators
 spec:
-  channel: openshift-operators
-  name: openshift-pipelines-operator-rh
-  source: redhat-operators
-  sourceNamespace: openshift-marketplace
+  channel:  ocp-4.6
+  name: openshift-pipelines-operator-rh 
+  source: redhat-operators 
+  sourceNamespace: openshift-marketplace 
 ----
 
 This YAML file defines various components, such as the `channel` specifying the channel name where we want to subscribe, `name` being the name of our Operator, and `source` being the CatalogSource that provides the operator. For your convenience, we've placed this exact file in your `/operator` local folder. 
