@@ -104,7 +104,7 @@ Create the pipeline by running the following:
 
 [source,bash,role=execute-1]
 ----
-`oc create -f pipeline/pipeline.yaml`
+oc create -f pipeline/pipeline.yaml
 ----
 
 In the next section, you will focus on creating a trigger to execute the tasks specified in the pipeline.

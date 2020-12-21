@@ -5,11 +5,11 @@ modules:
     intro:
         name: Workshop Introduction
     01install-op:
-        name: Install OpenShift Pipelines Operator
-    02new-project:
-        name: Create a New Project for your Pipelines
+        name: Review OpenShift Pipelines Operator Installation
+    02serviceaccount:
+        name: Pipeline Service Account
     03create-task:
-        name: Create Tasls
+        name: Create Tasks
     04task-resource-def:
         name: Task Resource Definitions
     05create-pipeline:
