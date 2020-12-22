@@ -1,8 +1,8 @@
-For this tutorial, you're going to create a simple application that involves a https://github.com/openshift-pipelines/vote-ui[frontend] and https://github.com/openshift-pipelines/vote-api[backend]. This application needs to deploy in a new project (i.e. Kubernetes namespace). You can start by creating the project with:
+For this tutorial, you're going to create a simple application that involves a https://github.com/openshift-pipelines/vote-ui[frontend] and https://github.com/openshift-pipelines/vote-api[backend]. This application needs to deploy in a project (i.e. Kubernetes namespace). You can start working with your project:
 
 [source,bash,role=execute-1]
 ----
-oc project pipelines-tutorial
+oc project
 ----
 
 You can also deploy the same applications by applying the artifacts available in k8s directory of the respective repo.
