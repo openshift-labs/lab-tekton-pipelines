@@ -41,8 +41,12 @@ tkn pipelinerun ls
 
 == Access Pipeline via Web Console
 
-To view the `PipelineRun` visually, visit the Pipelines section of the developer perspective. From here, you can see the details of our `Pipeline`, including the YAML file we've applied, the `PipelineRun`, input custom `params`, and more:
+To view the `PipelineRun` visually, visit the **Pipelines** section of the **Developer Perspective** from left side menu:
 
 image::images/web-console-developer.png[Web Console Pipelines]
+
+From here, you can see the details of our `Pipeline`, including the YAML file we've applied, the `PipelineRun`, input custom `params`, logs and more:
+
+image::images/pipeline-run-progress.png[Pipeline View]
 
 Congrats! Your `Pipeline` has successfully ran, and the final step will provide instructions on how to access the deployed image.
