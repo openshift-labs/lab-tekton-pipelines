@@ -51,7 +51,7 @@ You can take a look at the tasks you created using the https://github.com/tekton
 
 [source,bash,role="execute-1"]
 ----
-`tkn task ls`
+tkn task ls
 ----
 
 You should see similar output to this:
