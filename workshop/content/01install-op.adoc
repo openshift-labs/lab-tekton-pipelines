@@ -2,35 +2,13 @@ OpenShift Pipelines is provided as an OpenShift add-on that can be installed via
 
 Operators may be installed into a single namespace and only monitor resources in that namespace, but the OpenShift Pipelines Operator installs globally on the cluster and monitors and manage pipelines for every single user in the cluster.
 
-To install the operator globally, you need to be a cluster administrator user. In this workshop environment, the operator has already been installed for you. Nevertheless, this is the process we followed in order to install the operator. **These instructions are for reference, as you will not be able to see these screens in the embedded console in the workshop due to your user's lack of the required privileges.**
-
-== Install process
-
-To install the OpenShift Pipelines operator on an OpenShift 4 cluster, you would go to the **Catalog > OperatorHub** tab in the OpenShift web console. You can see the list of available operators for OpenShift provided by Red Hat as well as a community of partners and open-source projects.
-
-Next, you would click on the **Integration & Delivery** category to find the **OpenShift Pipeline Operator** as shown below:
-
-image:images/operatorhub.png[OpenShift OperatorHub]
-
-Click on **OpenShift Pipelines Operator**, **Continue**, and then **Install** as shown below:
-
-image:images/operator-install-1.png[OpenShift Pipelines Operator]
-
-Leave the default values after clicking **Install**. The operator will install globally and it will run in the `openshift-operators` project, as this is the pre-configured project for all global operators. Click on **Subscribe** in order to subscribe to the installation and update channels as shown below:
-
-image:images/operator-install-2.png[OpenShift Pipelines Operator]
-
-The operator is installed when you see the status updated from `1 installing` to `1 installed` as shown in the photo below:
-
-image:images/operator-install-3.png[OpenShift Pipelines Operator]
-
-This operator automates installation and updates of OpenShift Pipelines on the cluster as well as applying all configurations needed.
+To install the operator globally, you need to be a cluster administrator user. In this workshop environment, the operator has already been installed for you
 
 == Verify installation
 
 The OpenShift Pipelines Operator provides all its resources under a single API group: tekton.dev. You can see the new resources by running: 
 
-[source,bash,role=execute]
+[source,bash,role=execute-1]
 ----
 oc api-resources --api-group=tekton.dev
 ----
@@ -41,14 +19,14 @@ To validate that your user has the appropriate roles, you can use the `oc auth c
 
 The custom resource you need to create an OpenShift Pipelines pipeline is a resource of the kind pipeline.tekton.dev in the tekton.dev API group. To check that you can create this, run:
 
-[source,bash,role=execute]
+[source,bash,role=execute-1]
 ----
 oc auth can-i create pipeline.tekton.dev
 ----
 
 Or you can use the simplified version:
 
-[source,bash,role=execute]
+[source,bash,role=execute-1]
 ----
 oc auth can-i create Pipeline
 ----
@@ -57,17 +35,17 @@ When run, if the response is yes, you have the appropriate access.
 
 Verify that you can create the rest of the Tekton custom resources needed for this workshop by running the commands below. All of the commands should respond with yes.
 
-[source,bash,role=execute]
+[source,bash,role=execute-1]
 ----
 oc auth can-i create Task
 ----
 
-[source,bash,role=execute]
+[source,bash,role=execute-1]
 ----
 oc auth can-i create PipelineResource
 ----
 
-[source,bash,role=execute]
+[source,bash,role=execute-1]
 ----
 oc auth can-i create PipelineRun
 ----
