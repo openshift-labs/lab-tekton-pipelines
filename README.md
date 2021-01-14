@@ -64,23 +64,15 @@ Once the cluster is deployed, follow the directions in the next section to begin
 
 ## Running the Workshop
 
-You can determine the hostname for the URL to access the workshop by running:
+Access homeroom URL:
 
-```
-oc get route lab-tekton-pipelines
-```
-
-When first accessing the workshop URL, the user may be presented with a warning about a potential security risk. This is due to the workshop using a self-signed certificate and users should be instructed to elect to continue to the site.
-
-That URL leads to a login for the workshop itself.
-
-![Workshop Login](/docs/jupyter-login.png)
+![Workshop Login](/docs/homeroom.png)
 
 Users will enter the following information:
 
 | Key | Value |
 | --- | ----- |
-| Username | The user's e-mail address. This address is not saved anywhere outside of the workshop itself; it will not be used to follow up with the user. It simply acts as a unique identifier for the workshop instance. Logging into the site with a new username will cause a new instance of the workshop to be created (on the same cluster, however, so previously run cluster-wide operations will still be in effect. |
+| Username | userX (e.g. user1) |
 | Password | ``openshift`` |
 
 After logging in, the workshop takes a few seconds to start:
@@ -93,9 +85,7 @@ Once the workshop begins, users are presented with a two panel interface:
 
 On the left are the instructions users will follow for the workshop. The workshop itself explains how to use the interface, but generally speaking users will follow the directions on the left, with navigation buttons appearing at the end of each section. Text that is highlighted with a yellow background may be clicked to have the operation automatically executed in the cluster on the right.
 
-By default, users are presented with the terminal, which contains (among other things) an authenticated ``oc`` client. The ``Console`` tab on the right can be clicked to open the OpenShift web console. Again, the user will already be authenticated; if a workshop requires users to change their logged in OpenShift user, the workshop instructions will specifically mention that.
-
-![Workshop Console](/docs/workshop-console.png)
+By default, users are presented with the terminal, which contains (among other things) an authenticated ``oc`` client.
 
 
 ## Deleting the Workshop
