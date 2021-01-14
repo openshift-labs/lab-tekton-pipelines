@@ -1,6 +1,7 @@
 In this self-paced tutorial, you will learn how to use OpenShift Pipelines to automate the deployment of your applications.
 
 In this tutorial, you will:
+
 * Learn about the OpenShift Pipelines Operator
 * Create a Hello World `Task`
 * Install task resource definitions
