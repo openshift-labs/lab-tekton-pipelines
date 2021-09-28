@@ -1,5 +1,6 @@
 config:
     google_tracking_id: UA-135921114-10
+    template_engine: liquid.js
     
 modules:
     intro:
