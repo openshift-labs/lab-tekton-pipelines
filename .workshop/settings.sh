@@ -1,8 +1,8 @@
 WORKSHOP_NAME=lab-tekton-pipelines
-WORKSHOP_IMAGE=quay.io/openshiftlabs/lab-tekton-pipelines:4.6
+WORKSHOP_IMAGE=quay.io/openshiftlabs/lab-tekton-pipelines:4.8
 WORKSHOP_TITLE="OpenShift Pipelines with Tekton"
 WORKSHOP_DESCRIPTION="Developing applications using OpenShift pipelines"
-CONSOLE_IMAGE=quay.io/openshift/origin-console:4.6
+CONSOLE_IMAGE=quay.io/openshift/origin-console:4.8
 RESOURCE_BUDGET=custom
 MAX_SESSION_AGE=7200
 IDLE_TIMEOUT=300
