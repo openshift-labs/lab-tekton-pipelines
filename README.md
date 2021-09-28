@@ -60,7 +60,7 @@ sudo dnf install python3-dev
 Setup Virtual Env:
 
 ```bash
-cd agnosticd
+cd agnosticd/ansible
 python3 -mvenv ~/virtualenv/ansible2.9-python3.6-2021-01-22
 . ~/virtualenv/ansible2.9-python3.6-2021-01-22/bin/activate
  pip install -r https://raw.githubusercontent.com/redhat-cop/agnosticd/development/tools/virtualenvs/ansible2.9-python3.6-2021-01-22.txt

@@ -26,7 +26,7 @@ oc project -q
 OpenShift ships with a web-based console that will allow users to
 perform various tasks via a browser. 
 
-To get a feel for how the web console works, click on this http://console-openshift-console.{{cluster_subdomain}}/k8s/cluster/projects[Web Console] link.
+To get a feel for how the web console works, get Web Console link from this command output:
 
 [source,bash,role=execute-1]
 ----
