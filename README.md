@@ -2,8 +2,8 @@
 
 * [Overview](#overview)
 * [Deploying the Workshop](#deploying-the-workshop)
-  * [Deploying to OpenShift](#deploying-to-openshift)
   * [Deploying on Red Hat Product Demo System](#deploying-on-red-hat-product-demo-system)
+  * [Deploying to OpenShift](#deploying-to-openshift)
 * [Running the Workshop](#running-the-workshop)
 * [Deleting the Workshop](#deleting-the-workshop)
 * [Development](#development)
@@ -28,7 +28,69 @@ When the URL for the workshop environment is accessed, a workshop session will b
 
 ## Deploying the Workshop
 
+
+
+### Deploying on Red Hat Product Demo System
+
+The workshop is found in the catalog under the *Workshops* folder and is named *OCP4 Pipelines Workshop*.
+
+Once the cluster is deployed, follow the directions in the next section to begin the workshop itself.
+
+
+#### Deploying on RHPDS with AgnosticD
+
+Login to the RHPDS cluster.
+
+```bash
+oc login ...
+```
+
+Clone [AgnosticD](https://github.com/redhat-cop/agnosticd):
+
+```bash
+git clone https://github.com/redhat-cop/agnosticd
+```
+
+Install dependencies such as Python headers (Python.h), on Fedora:
+
+```bash
+sudo dnf install python3-dev
+```
+
+Setup Virtual Env:
+
+```bash
+cd agnosticd
+python3 -mvenv ~/virtualenv/ansible2.9-python3.6-2021-01-22
+. ~/virtualenv/ansible2.9-python3.6-2021-01-22/bin/activate
+ pip install -r https://raw.githubusercontent.com/redhat-cop/agnosticd/development/tools/virtualenvs/ansible2.9-python3.6-2021-01-22.txt
+```
+
+Run the playbooks:
+
+```bash
+OCP_USERNAME="opentlc-mgr"
+GUID=sampleuser
+WORKSHOP_PROJECT="labs"
+WORKLOAD="ocp4-workload-homeroomlab-tekton-pipelines"
+TARGET_HOST=localhost
+
+ansible-playbook -c local -i ${TARGET_HOST}, configs/ocp-workloads/ocp-workload.yml \
+      -e ansible_python_interpreter=python \
+      -e ocp_workload=${WORKLOAD} \
+      -e guid=${GUID} \
+      -e project_name=${WORKSHOP_PROJECT} \
+      -e ocp_username=${OCP_USERNAME} \
+      -e ACTION="create" \
+      --extra-vars '{"num_users": 5}'
+```
+
+Access `labs` project and click to the Homeroom route.
+
+
 ### Deploying to OpenShift
+
+WARNING: Homeroom is EOL and not supported outside RHPDS.
 
 To deploy the workshop, first clone this Git repository to your own machine. Use the command:
 
@@ -56,12 +118,6 @@ From within the top level of the Git repository, now run the command below.
 
 The name of the pod used to start the workshop will be ``lab-tekton-pipelines-spawner``.
 
-### Deploying on Red Hat Product Demo System
-
-The workshop is found in the catalog under the *Workshops* folder and is named *OCP4 Pipelines Workshop*.
-
-Once the cluster is deployed, follow the directions in the next section to begin the workshop itself.
-
 ## Running the Workshop
 
 Access homeroom URL:
@@ -88,7 +144,11 @@ On the left are the instructions users will follow for the workshop. The worksho
 By default, users are presented with the terminal, which contains (among other things) an authenticated ``oc`` client.
 
 
+
 ## Deleting the Workshop
+
+WARNING: Homeroom is EOL and not supported outside RHPDS.
+
 
 To delete the spawner and any active sessions, including projects, run:
 
@@ -109,6 +169,9 @@ To delete any global resources which may have been created, run:
 ```
 
 ## Development
+
+WARNING: Homeroom is EOL and not supported outside RHPDS.
+
 
 The deployment created above will use an image from ``quay.io`` for this workshop based on the ``master`` branch of the repository.
 
