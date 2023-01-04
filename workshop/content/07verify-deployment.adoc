@@ -16,7 +16,7 @@ In addition, you can get the route of the application by executing the following
 
 [source,bash,role=execute-1]
 ----
-oc get route pipelines-vote-ui --template='http://{{.spec.host}}'
+oc get route pipelines-vote-ui -ojsonpath='http://{.spec.host}{"\n"}'
 ----
 
 Congratulations! You have successfully deployed your first application using OpenShift Pipelines.
